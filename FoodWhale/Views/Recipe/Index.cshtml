@@ -1,0 +1,76 @@
+﻿@model IEnumerable<FoodWhale.Model.Recipe>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="u-align-left u-container-style u-grey-5 u-group u-group-2">
+    <a style="height:fit-content; margin-top: -2rem; margin-left: 1rem" asp-action="Create">Add</a>
+    <table class="table" style="margin-left:-2.8rem">
+        <thead>
+            <tr>
+                <th>
+                    ID
+                </th>
+                <th>
+                    Name
+                </th>
+                <th>
+                    Description
+                </th>
+                <th>
+                    Video URL
+                </th>
+                <th>
+                    Difficulty
+                </th>
+                <th>
+                    Time
+                </th>
+                <th>
+                    Rating
+                </th>
+                <th>
+                    Category
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Rid)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Rname)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Rdescription)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.VideoUrl)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Difficulty)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Time)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Rating)
+                    </td>
+                    <td>
+                        <a asp-controller="Category" asp-action="Index">  @Html.DisplayFor(modelItem => item.CidNavigation.Cid)  </a>
+                    </td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.Rid">Edit</a><br />
+                        <a asp-action="Delete" asp-route-id="@item.Rid">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

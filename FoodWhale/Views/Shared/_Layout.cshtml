@@ -1,0 +1,76 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - FoodWhale</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="~/css/Index1.css" media="screen">
+    <link rel="stylesheet" href="~/css/nicepage.css" media="screen">
+    <script class="u-script" type="text/javascript" src="~/js/jquery.js" defer=""></script>
+    <script class="u-script" type="text/javascript" src="~/js/nicepage.js" defer=""></script>
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+            <div class="container">
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">FoodWhale</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index"></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Recipe" asp-action="Index"></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Category" asp-action="Index"></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="User" asp-action="Index1"></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            <section class="u-clearfix u-section-1" id="sec-c977">
+                <div class="u-clearfix u-sheet u-sheet-1">
+                    <div class="u-container-style u-grey-5 u-group u-group-1">
+                        <div class="u-container-layout u-container-layout-1">
+                            <div class="u-grey-10 u-shape u-shape-circle u-shape-1"></div>
+                            <p class="u-text u-text-default u-text-1">Manager</p>
+                            <a asp-controller="Category" asp-action="Index" class="u-border-none u-btn u-btn-round u-button-style u-grey-10 u-radius-50 u-btn-1">Category</a>
+                            <a asp-controller="Ingredient" asp-action="Index" class="u-border-none u-btn u-btn-round u-button-style u-grey-10 u-radius-50 u-btn-1">Ingredient</a>
+                            <a asp-controller="Order" asp-action="Index" class="u-border-none u-btn u-btn-round u-button-style u-grey-10 u-radius-50 u-btn-1">Order</a>
+                            <a asp-controller="OrderDetail" asp-action="Index" class="u-border-none u-btn u-btn-round u-button-style u-grey-10 u-radius-50 u-btn-1">Order Detail</a>
+                            <a asp-controller="Recipe" asp-action="Index" class="u-border-none u-btn u-btn-round u-button-style u-grey-10 u-radius-50 u-btn-1">Recipe</a>
+                            <a asp-controller="RecipeIngredient" asp-action="Index" class="u-border-none u-btn u-btn-round u-button-style u-grey-10 u-radius-50 u-btn-1">Recipe Ingredient</a>
+                            <a asp-controller="UserAccess" asp-action="Index" class="u-border-none u-btn u-btn-round u-button-style u-grey-10 u-radius-50 u-btn-1">User Access</a>
+                            <a asp-controller="User" asp-action="Index" class="u-border-none u-btn u-btn-round u-button-style u-grey-10 u-radius-50 u-btn-1">User</a>
+                        </div>
+                    </div>
+                    @RenderBody()
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2021 - FoodWhale - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

@@ -1,0 +1,62 @@
+﻿@model FoodWhale.Model.Recipe
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="u-align-left u-container-style u-grey-5 u-group u-group-2" style="margin-bottom: 2rem">
+    <div class="rowUser">
+        <div class="frmUser">
+            <form asp-action="Edit">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="Rid" />
+                <div class="form-group">
+                    <label asp-for="Rname" class="control-label"></label>
+                    <input asp-for="Rname" class="form-control" />
+                    <span asp-validation-for="Rname" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Rdescription" class="control-label"></label>
+                    <input asp-for="Rdescription" class="form-control" />
+                    <span asp-validation-for="Rdescription" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="VideoUrl" class="control-label"></label>
+                    <input asp-for="VideoUrl" class="form-control" />
+                    <span asp-validation-for="VideoUrl" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Difficulty" class="control-label"></label>
+                    <input asp-for="Difficulty" class="form-control" />
+                    <span asp-validation-for="Difficulty" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Time" class="control-label"></label>
+                    <input asp-for="Time" class="form-control" />
+                    <span asp-validation-for="Time" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Cid" class="control-label"></label>
+                    <select asp-for="Cid" class="form-control" asp-items="ViewBag.Cid"></select>
+                    <span asp-validation-for="Cid" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Rating" class="control-label"></label>
+                    <input asp-for="Rating" class="form-control" />
+                    <span asp-validation-for="Rating" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Save" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<div style="margin-left:21rem">
+    <a asp-action="Index">Back to List</a>
+</div>
+
+    @section Scripts {
+        @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    }

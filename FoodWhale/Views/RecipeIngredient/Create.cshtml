@@ -1,0 +1,34 @@
+﻿@model FoodWhale.Model.RecipeIngredient
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="u-align-left u-container-style u-grey-5 u-group u-group-2" style="margin-bottom: 2rem">
+    <div class="rowUser">
+        <div class="frmUser">
+            <form asp-action="Create">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="Rid" class="control-label"></label>
+                    <select asp-for="Rid" class="form-control" asp-items="ViewBag.Rid"></select>
+                </div>
+                <div class="form-group">
+                    <label asp-for="InId" class="control-label"></label>
+                    <select asp-for="InId" class="form-control" asp-items="ViewBag.InId"></select>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Create" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<div style="margin-left:21rem">
+    <a asp-action="Index">Back to List</a>
+</div>
+
+    @section Scripts {
+        @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    }

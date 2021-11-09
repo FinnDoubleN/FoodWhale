@@ -1,0 +1,47 @@
+﻿@model FoodWhale_User.Models.User
+
+<html lang="en">    
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="~/css/style.css" />
+    <title>Login</title>
+</head>
+
+<body>
+    <div class="login">
+        <div class="form">
+            <div class="selection-login selection">
+                <input type="submit" name="login" value="Login" id="login">
+                <input type="submit" name="register" value="Register" id="register">
+            </div>
+            <form asp-controller="Login" asp-action="Login" method="post">
+                <div class="input-login flex">
+                    <input type="text" asp-for="Email" placeholder="Email" id="" required>
+                    <span asp-validation-for="Email"></span>
+                    <input type="password" asp-for="Password" placeholder="Password" id="" required>
+                    <span asp-validation-for="Password"></span>
+                    <input type="submit" value="Login">
+                </div>
+            </form>
+        </div>
+    </div>
+    <script type="text/javascript">
+        document.getElementById("login").addEventListener("click", login);
+        document.getElementById("register").addEventListener("click", register);
+
+        function login() {
+            var url = "@Url.Action("Login", "Login")";
+            location.href = url;
+        }
+
+        function register() {
+            var url = "@Url.Action("Register", "Login")";
+            location.href = url;
+        }
+    </script>
+</body>
+
+</html>

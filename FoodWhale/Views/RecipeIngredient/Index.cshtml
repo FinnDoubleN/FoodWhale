@@ -1,0 +1,41 @@
+﻿@model IEnumerable<FoodWhale.Model.RecipeIngredient>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="u-align-left u-container-style u-grey-5 u-group u-group-2">
+    <a style="height:fit-content; margin-top: -2rem; margin-left: 1rem" asp-action="Create">Add</a>
+    <table class="table" style="margin-left:-2.8rem">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.In)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.RidNavigation)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.In.InId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.RidNavigation.Rid)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ })<br />
+                        @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
