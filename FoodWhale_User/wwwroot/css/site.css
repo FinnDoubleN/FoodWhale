@@ -72,3 +72,154 @@ body {
   line-height: 60px; /* Vertically center the text there */
 }
 
+.user-cart {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    background: #fff;
+}
+
+.cart-navigate {
+    display: flex;
+    align-items: center;
+    height: 50px;
+    text-transform: capitalize;
+    margin-bottom: 0.75rem;
+    color: #888;
+    padding: 0 20px;
+    background: #f2f2f2;
+}
+
+.nav-item-1 {
+    color: rgba(0,0,0,.8);
+    width: 50%;
+}
+
+.nav-item-2 {
+    width: 12.5%;
+    text-align: center;
+}
+
+.nav-item-3 {
+    width: 12.5%;
+    text-align: center;
+}
+
+.nav-item-4 {
+    width: 12.5%;
+    text-align: center;
+}
+
+.nav-item-5 {
+    width: 12.5%;
+    text-align: center;
+}
+
+.item-frame {
+
+    margin-bottom: 1rem;
+}
+
+.item {
+    margin-top: 15px;
+    color: rgba(0,0,0,.87);
+    padding: 0 20px 15px;
+}
+
+.item:first-child {
+    padding-top: 15px;
+}
+
+.item:last-child {
+    padding-bottom: 20px;
+}
+
+.item-grid {
+    display: flex;
+    align-items: center;
+}
+
+.item-grid-1 {
+    display: flex;
+    width: 50%;
+}
+
+.item-img {
+    background-position: 50%;
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 80px;
+    height: 80px;
+}
+
+.item-name {
+    line-height: 1rem;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    padding: 10px 20px 0 10px;
+    font-size: 14px;
+    width: 100%;
+}
+
+.button-quantity {
+    outline: none;
+    cursor: pointer;
+    border: 0;
+    font-size: .875rem;
+    font-weight: 300;
+    line-height: 1;
+    letter-spacing: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color .1s cubic-bezier(.4,0,.6,1);
+    border: 1px solid rgba(0,0,0,.09);
+    border-radius: 2px;
+    background: transparent;
+    color: rgba(0,0,0,.8);
+    width: 32px;
+    height: 32px;
+}
+
+.input-quantity {
+    width: 50px;
+    height: 32px;
+    border-left: 0;
+    border-right: 0;
+    font-size: 16px;
+    font-weight: 400;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    text-align: center;
+    cursor: text;
+    border-radius: 0;
+    -webkit-appearance: none;
+}
+
+.cart-svg-icon {
+    font-size: 10px;
+    width: 10px;
+    height: 10px;
+    flex-shrink: 0;
+}
+
+.item-grid-2 {
+    display: flex;
+    width: 12.5%;
+}
+
+.item-grid-3 {
+    display: flex;
+    width: 12.5%;
+}
+
+.item-grid-4 {
+    display: flex;
+    width: 12.5%;
+}
+
+.item-grid-5 {
+    display: flex;
+    width: 12.5%;
+}

@@ -11,13 +11,16 @@
         <thead>
             <tr>
                 <th>
-                    @Html.DisplayNameFor(model => model.Date)
+                    ID
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.Status)
+                    User ID
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.UidNavigation)
+                    Date
+                </th>
+                <th>
+                    Status
                 </th>
                 <th></th>
             </tr>
@@ -25,21 +28,24 @@
         <tbody>
             @foreach (var item in Model)
             {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Date)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Status)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.UidNavigation.Uid)
-                    </td>
-                    <td>
-                        <a asp-action="Edit" asp-route-id="@item.Oid">Edit</a><br />
-                        <a asp-action="Delete" asp-route-id="@item.Oid">Delete</a>
-                    </td>
-                </tr>
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Oid)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UidNavigation.Uid)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Date)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Status)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Oid">Edit</a><br />
+                    <a asp-action="Delete" asp-route-id="@item.Oid">Delete</a>
+                </td>
+            </tr>
             }
         </tbody>
     </table>

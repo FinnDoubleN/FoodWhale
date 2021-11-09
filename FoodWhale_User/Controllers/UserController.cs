@@ -1,6 +1,7 @@
 ﻿using FoodWhale_User.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,19 +20,33 @@ namespace FoodWhale.Controllers
             return View(model);
         }
 
+        public User GetById(int id)
+        {
+            return context.Users.SingleOrDefault(x => x.Uid == id);
+        }
+
         // GET: UserController/Details/5
         public ActionResult Details(int id)
         {
-            if (id == 0)
+            if (HttpContext.Session.GetString("UserSession") != null)
             {
-                return NotFound();
+                TempData["user"] = JsonConvert.DeserializeObject<User>(HttpContext.Session.GetString("UserSession"));
+                if (id == 0)
+                {
+                    return NotFound();
+                }
+                var user = context.Users.FirstOrDefault(m => m.Uid == id);
+                if (user == null)
+                {
+                    return NotFound();
+                }
+                return View(user);
             }
-            var user = context.Users.FirstOrDefault(m => m.Uid == id);
-            if (user == null)
+            else
             {
-                return NotFound();
+                return RedirectToAction("Login", "User");
             }
-            return View(user);
+            
         }
 
         // GET: UserController/Create
@@ -44,16 +59,24 @@ namespace FoodWhale.Controllers
         // GET: UserController/Edit/5
         public ActionResult Edit(int id)
         {
-            if (id == 0)
+            if (HttpContext.Session.GetString("UserSession") != null)
             {
-                return NotFound();
+                TempData["user"] = JsonConvert.DeserializeObject<User>(HttpContext.Session.GetString("UserSession"));
+                if (id == 0)
+                {
+                    return NotFound();
+                }
+                var user = context.Users.Find(id);
+                if (user == null)
+                {
+                    return NotFound();
+                }
+                return View(user);
             }
-            var user = context.Users.Find(id);
-            if (user == null)
+            else
             {
-                return NotFound();
+                return RedirectToAction("Login", "User");
             }
-            return View(user);
         }
 
         // POST: UserController/Edit/5
@@ -61,18 +84,24 @@ namespace FoodWhale.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit(int id, User user)
         {
-            if (id != user.Uid)
+            if (HttpContext.Session.GetString("UserSession") != null)
             {
-                return NotFound();
+                TempData["user"] = JsonConvert.DeserializeObject<User>(HttpContext.Session.GetString("UserSession"));
+                if (id != user.Uid)
+                {
+                    return NotFound();
+                }
+                if (ModelState.IsValid)
+                {
+                    context.Update(user);
+                    context.SaveChanges();
+                }
+                return View(user);
             }
-            if (ModelState.IsValid)
+            else
             {
-                context.Update(user);
-                context.SaveChanges();
-                return RedirectToAction(nameof(Details));
+                return RedirectToAction("Login", "User");
             }
-            return View(user);
-
         }
 
         // GET: UserController/Delete/5

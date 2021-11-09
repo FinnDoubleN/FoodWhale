@@ -40,7 +40,7 @@ namespace FoodWhale_User.Controllers
                 var UserSession = new User();
                 UserSession.Uid = user.Uid;
                 // Tao 1 session
-                HttpContext.Session.SetString("UserSession", JsonConvert.SerializeObject(UserSession));
+                    HttpContext.Session.SetString("UserSession", JsonConvert.SerializeObject(UserSession));
                 return RedirectToAction("Index", "Recipe");
             }
                 return View(model);

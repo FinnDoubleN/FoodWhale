@@ -11,6 +11,9 @@
         <thead>
             <tr>
                 <th>
+                    ID
+                </th>
+                <th>
                     Username
                 </th>
                 <th>
@@ -20,7 +23,7 @@
                     Email
                 </th>
                 <th>
-                    Date of Birth
+                    DoB
                 </th>
                 <th>
                     Gender
@@ -31,45 +34,48 @@
                 <th>
                     City
                 </th>
-                <th>
+                <th style="background: #f2f2f2;">
                     Phone
                 </th>
-                <th></th>
+                <th style="background: #f2f2f2;"></th>
             </tr>
         </thead>
         <tbody>
             @foreach (var item in Model)
             {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Uname)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Password)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Email)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.DoB)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Gender)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Address)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.City)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Phone)
-                    </td>
-                    <td>
-                        <a asp-action="Edit" asp-route-id="@item.Uid">Edit</a><br />
-                        <a asp-action="Delete" asp-route-id="@item.Uid">Delete</a>
-                    </td>
-                </tr>
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Uid)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Uname)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Password)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    @Convert.ToDateTime(item.DoB).ToString("yyyy/MM/dd")
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Gender)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Address)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.City)
+                </td>
+                <td style="background: #f2f2f2;">
+                    @Html.DisplayFor(modelItem => item.Phone)
+                </td>
+                <td style="background: #f2f2f2;">
+                    <a asp-action="Edit" asp-route-id="@item.Uid">Edit</a><br />
+                    <a asp-action="Delete" asp-route-id="@item.Uid">Delete</a>
+                </td>
+            </tr>
             }
         </tbody>
     </table>

@@ -1,164 +1,151 @@
-﻿@model FoodWhale_User.Models.User
-
+﻿
 @{
     var user = TempData["user"] as User;
+    Layout = "~/Views/Shared/_LayoutEmpty.cshtml";
 }
 
-<h2>Welcome: @user.Email</h2>
-<h2>Product List</h2>
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="~/css/Recipe.css" />
-    <title>Recipe</title>
-</head>
-
-<body>
-    <div class="page-container">
-        <div class="page-wrapper">
-            <div class="breadcrumb">
-                <ul>
-                    <li class="">
-                        <a href="#">FoodWhale/</a>
-                    </li>
-                    <li class="">
-                        <a href="#">Recipe/</a>
-                    </li>
-                    <li class="active">
-                        <span>Fried Eggs</span>
-                    </li>
-                </ul>
-            </div><!--ex: foodwhale/recipe/eggs-->
-            <div class="product-detail-container">
-                <div class="product-common">
-                    <div class="photo-container">
-                        <div class="photo-box">
-                            <div class="main-photo">
-                                <div class="avaBox">
-                                    <img src="" />
-                                </div>
-                                <img class="play-video" src="" />
+<div class="page-container">
+    <div class="page-wrapper">
+        <div class="breadcrumb">
+            <ul>
+                <li class="">
+                    <a href="#">FoodWhale/</a>
+                </li>
+                <li class="">
+                    <a href="#">Recipe/</a>
+                </li>
+                <li class="active">
+                    <span>Fried Eggs</span>
+                </li>
+            </ul>
+        </div><!--ex: foodwhale/recipe/eggs-->
+        <div class="product-detail-container">
+            <div class="product-common">
+                <div class="photo-container">
+                    <div class="photo-box">
+                        <div class="main-photo">
+                            <div class="avaBox">
+                                <img src="" />
                             </div>
-                            <div class="side">
-                                <div class="side-item is-main">
-                                    <img class="img-fit" src="" />
-                                </div>
-                                <div class="side-item">
-                                    <img class="img-fit" src="" />
-                                </div>
-                                <div class="side-item">
-                                    <img class="img-fit" src="" />
-                                </div>
-                                <div class="side-item">
-                                    <img class="img-fit" src="" />
-                                </div>
-                                <div class="side-item">
-                                    <img class="img-fit" src="" />
-                                </div>
+                            <img class="play-video" src="" />
+                        </div>
+                        <div class="side">
+                            <div class="side-item is-main">
+                                <img class="img-fit" src="" />
                             </div>
-                        </div><!--ex: anh do an-->
-                    </div>
-                    <div class="package-info">
-                        <div class="basic-info-box">
-                            <h1 class="name">Fried Eggs</h1>
-                            <div class="stat">
-                                <div class="type">Eggs</div>
-                                <div class="stat-info">
-                                    <img src="" />
-                                    "&nbsp;&nbsp;"
-                                    "1.4k"
-                                </div>
+                            <div class="side-item">
+                                <img class="img-fit" src="" />
                             </div>
-                            <div class="options-box">
-                                <ul class="custom-horizontal-scrollbar" title="add to cart">
-                                    <button class="add-to-cart">
-                                    <li class="is-default">Eggs</li>
-                                    </button>
-                                </ul>
+                            <div class="side-item">
+                                <img class="img-fit" src="" />
+                            </div>
+                            <div class="side-item">
+                                <img class="img-fit" src="" />
+                            </div>
+                            <div class="side-item">
+                                <img class="img-fit" src="" />
                             </div>
                         </div>
-                        <div class="extra-info-box">
-                            <div class="display-flex btn-cart-box">
-                                <button class="add-item-wrapper n-btn btn-add-to-cart btn-add-to-collection ">
-                                    <span class="row-1">
-                                        <img class="icon" src="~/img/rating.png" />
-                                        <span class="text display-block">10/10</span>
-                                    </span>
-                                </button>
-                                <button class="btn-add-to-cart n-btn btn-add-to-cart"
-                                        title="bam de them vao gio hang" style="background: none !important;">
-                                    <span class="row-1">
-                                        <img class="icon" src="~/img/cart.png" />
-                                        <span class="text display-block">Add to Cart</span>
-                                    </span>
-                                </button>
-                                <button class="btn-add-to-cart n-btn btn-order "
-                                        title="bam de mua ngay" background: rgb(242, 39, 38) !important;>
-                                    <span class="row-1">
-                                        <span class="text display-block">Buy Now</span>
-                                    </span>
-                                </button>
+                    </div><!--ex: anh do an-->
+                </div>
+                <div class="package-info">
+                    <div class="basic-info-box">
+                        <h1 class="name">Fried Eggs</h1>
+                        <div class="stat">
+                            <div class="type">Eggs</div>
+                            <div class="stat-info">
+                                <img src="" />
+                                "&nbsp;&nbsp;"
+                                "1.4k"
                             </div>
-                            <ul class="services-box">
-                                <li class="">
-                                    <img src="~/img/difficulties.png" />
-                                    Difficulty
-                                    <div>Easy</div>
-                                </li>
-                                <li class="active">
-                                    <img src="~/img/clock.png" />
-                                    Time
-                                    <div>5min</div>
-                                </li>
-                                <li class="">
-                                    <img src="~/img/rating.png" />
-                                    Rating
-                                    <div>10/10</div>
-                                </li>
+                        </div>
+                        <div class="options-box">
+                            <ul class="custom-horizontal-scrollbar" title="add to cart">
+                                <button class="add-to-cart">
+                                <li class="is-default">Eggs</li>
+                                </button>
                             </ul>
                         </div>
                     </div>
-                </div>
-                <div class="product-desc">
-                    <div class="title-box">
-                        <div class="active">Huong dan</div>
-                    </div>
-                    <div class="content-box">
-                        <div class="active">
-                            <ul class="rc-steps-box">
-                                <li>
-                                    <span>Step 1:</span>
-                                    <div>Something something</div>
-                                </li>
-                            </ul>
+                    <div class="extra-info-box">
+                        <div class="display-flex btn-cart-box">
+                            <button class="add-item-wrapper n-btn btn-add-to-cart btn-add-to-collection ">
+                                <span class="row-1">
+                                    <img class="icon" src="~/img/rating.png" />
+                                    <span class="text display-block">10/10</span>
+                                </span>
+                            </button>
+                            <button class="btn-add-to-cart n-btn btn-add-to-cart"
+                                    title="bam de them vao gio hang" style="background: none !important;">
+                                <span class="row-1">
+                                    <img class="icon" src="~/img/cart.png" />
+                                    <span class="text display-block">Add to Cart</span>
+                                </span>
+                            </button>
+                            <button class="btn-add-to-cart n-btn btn-order "
+                                    title="bam de mua ngay" background: rgb(242, 39, 38) !important;>
+                                <span class="row-1">
+                                    <span class="text display-block">Buy Now</span>
+                                </span>
+                            </button>
                         </div>
+                        <ul class="services-box">
+                            <li class="">
+                                <img src="~/img/difficulties.png" />
+                                Difficulty
+                                <div>Easy</div>
+                            </li>
+                            <li class="active">
+                                <img src="~/img/clock.png" />
+                                Time
+                                <div>5min</div>
+                            </li>
+                            <li class="">
+                                <img src="~/img/rating.png" />
+                                Rating
+                                <div>10/10</div>
+                            </li>
+                        </ul>
                     </div>
                 </div>
-                <div class="related-package">
-                    <label class="title">
-                        <span class="flex-align-center">
-                            <img class="icon" src="~/img/file.png" />
-                            Related
-                        </span>
-                    </label>
-                    <div class="package-list">
-                        <div class="package">
-                            <div class="cover-photo">
-                                <a class="display-block" target="_self" href="">
-                                    <img class="img-fit" src="" alt="Fried Eggs" />
-                                </a>
+            </div>
+            <div class="product-desc">
+                <div class="title-box">
+                    <div class="active">Huong dan</div>
+                </div>
+                <div class="content-box">
+                    <div class="active">
+                        <ul class="rc-steps-box">
+                            <li>
+                                <span>Step 1:</span>
+                                <div>Something something</div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="related-package">
+                <label class="title">
+                    <span class="flex-align-center">
+                        <img class="icon" src="~/img/file.png" />
+                        Related
+                    </span>
+                </label>
+                <div class="package-list">
+                    <div class="package">
+                        <div class="cover-photo">
+                            <a class="display-block" target="_self" href="">
+                                <img class="img-fit" src="" alt="Fried Eggs" />
+                            </a>
+                        </div>
+                        <div class="overview">
+                            <div class="name two-lines">
+                                <a target="_self" class="text-black text-decoration-none"
+                                   href="" title="Fried Eggs">Fried Eggs</a>
                             </div>
-                            <div class="overview">
-                                <div class="name two-lines">
-                                    <a target="_self" class="text-black text-decoration-none"
-                                       href="" title="Fried Eggs">Fried Eggs</a>
-                                </div>
-                                <div class="display-flex-center-middle">
-                                    <div class="price p-g-v">
-                                        <div class="price">"12min"</div>
-                                    </div>
+                            <div class="display-flex-center-middle">
+                                <div class="price p-g-v">
+                                    <div class="price">"12min"</div>
                                 </div>
                             </div>
                         </div>
@@ -167,4 +154,4 @@
             </div>
         </div>
     </div>
-</body>
+</div>

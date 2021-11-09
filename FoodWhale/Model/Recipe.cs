@@ -20,6 +20,7 @@ namespace FoodWhale.Model
         public int Time { get; set; }
         public string Cid { get; set; }
         public int Rating { get; set; }
+        public int? ImageId { get; set; }
 
         public virtual Category CidNavigation { get; set; }
         public virtual ICollection<RecipeIngredient> RecipeIngredients { get; set; }

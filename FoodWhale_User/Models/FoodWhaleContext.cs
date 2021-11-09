@@ -22,6 +22,7 @@ namespace FoodWhale_User.Models
         public virtual DbSet<Order> Orders { get; set; }
         public virtual DbSet<OrderDetail> OrderDetails { get; set; }
         public virtual DbSet<Recipe> Recipes { get; set; }
+        public virtual DbSet<RecipeImage> RecipeImages { get; set; }
         public virtual DbSet<RecipeIngredient> RecipeIngredients { get; set; }
         public virtual DbSet<User> Users { get; set; }
         public virtual DbSet<UserAccess> UserAccesses { get; set; }
@@ -36,7 +37,7 @@ namespace FoodWhale_User.Models
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.HasAnnotation("Relational:Collation", "Latin1_General_CI_AS");
+            modelBuilder.HasAnnotation("Relational:Collation", "SQL_Latin1_General_CP1_CI_AS");
 
             modelBuilder.Entity<Category>(entity =>
             {
@@ -155,6 +156,8 @@ namespace FoodWhale_User.Models
                     .HasMaxLength(50)
                     .IsUnicode(false);
 
+                entity.Property(e => e.ImageId).HasColumnName("imageID");
+
                 entity.Property(e => e.Rdescription)
                     .IsRequired()
                     .IsUnicode(false)
@@ -175,6 +178,22 @@ namespace FoodWhale_User.Models
                     .HasForeignKey(d => d.Cid)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_Recipe_Category");
+            });
+
+            modelBuilder.Entity<RecipeImage>(entity =>
+            {
+                entity.HasNoKey();
+
+                entity.ToTable("Recipe_Image");
+
+                entity.Property(e => e.ImageUrl).HasColumnName("imageURL");
+
+                entity.Property(e => e.Rid).HasColumnName("RID");
+
+                entity.HasOne(d => d.RidNavigation)
+                    .WithMany()
+                    .HasForeignKey(d => d.Rid)
+                    .HasConstraintName("FK__Recipe_Imag__RID__5BE2A6F2");
             });
 
             modelBuilder.Entity<RecipeIngredient>(entity =>
@@ -230,6 +249,8 @@ namespace FoodWhale_User.Models
                     .HasMaxLength(1)
                     .IsUnicode(false)
                     .IsFixedLength(true);
+
+                entity.Property(e => e.ImageUrl).HasColumnName("imageURL");
 
                 entity.Property(e => e.Password)
                     .IsRequired()
