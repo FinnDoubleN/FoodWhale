@@ -71,7 +71,7 @@ namespace FoodWhale.Controllers
                 {
                     return NotFound();
                 }
-                return View(user);
+                return Details(user.UId);
             }
             else
             {
@@ -96,7 +96,7 @@ namespace FoodWhale.Controllers
                     context.Update(user);
                     context.SaveChanges();
                 }
-                return View(user);
+                return Details(id);
             }
             else
             {

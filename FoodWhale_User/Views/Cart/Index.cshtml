@@ -34,14 +34,14 @@
                     </div>
                     <div class="flex-3">
                         <div class="cart-input-quantity">
-                            <button class="input" onclick="setQuantity('down');">
+                            <button class="input" onclick="setQuantity('down', '0');">
                                 <svg enable-background="new 0 0 10 10" viewBox="0 0 10 10" x="0" y="0" class="svg-icon">
                                     <polygon points="4.5 4.5 3.5 4.5 0 4.5 0 5.5 3.5 5.5 4.5 5.5 10 5.5 10 4.5">
                                     </polygon>
                                 </svg>
                             </button>
                             <input class="input input-num" value="1" readonly />
-                            <button class="input" onclick="setQuantity('up');">
+                            <button class="input" onclick="setQuantity('up', '0');">
                                 <svg enable-background="new 0 0 10 10" viewBox="0 0 10 10" x="0" y="0" class="svg-icon">
                                     <polygon points="10 4.5 5.5 4.5 5.5 0 4.5 0 4.5 4.5 0 4.5 0 5.5 4.5 5.5 4.5 10 5.5 10 5.5 5.5 10 5.5">
                                     </polygon>
@@ -50,7 +50,7 @@
                         </div>
                     </div>
                     <div class="flex-4">
-                        <span>
+                        <span class="total">
                             ₫105.000
                         </span>
                     </div>
@@ -84,14 +84,14 @@
                     </div>
                     <div class="flex-3">
                         <div class="cart-input-quantity">
-                            <button class="input" onclick="setQuantity('down');">
+                            <button class="input" onclick="setQuantity('down', '1');">
                                 <svg enable-background="new 0 0 10 10" viewBox="0 0 10 10" x="0" y="0" class="svg-icon">
                                     <polygon points="4.5 4.5 3.5 4.5 0 4.5 0 5.5 3.5 5.5 4.5 5.5 10 5.5 10 4.5">
                                     </polygon>
                                 </svg>
                             </button>
-                            <input class="input input-num" id="quantity" value="1" readonly />
-                            <button class="input" onclick="setQuantity('up');">
+                            <input class="input input-num" value="1" readonly />
+                            <button class="input" onclick="setQuantity('up', '1');">
                                 <svg enable-background="new 0 0 10 10" viewBox="0 0 10 10" x="0" y="0" class="svg-icon">
                                     <polygon points="10 4.5 5.5 4.5 5.5 0 4.5 0 4.5 4.5 0 4.5 0 5.5 4.5 5.5 4.5 10 5.5 10 5.5 5.5 10 5.5">
                                     </polygon>
@@ -100,7 +100,7 @@
                         </div>
                     </div>
                     <div class="flex-4">
-                        <span>
+                        <span class="total">
                             ₫75.000
                         </span>
                     </div>

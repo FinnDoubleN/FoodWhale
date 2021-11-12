@@ -1,4 +1,5 @@
 ﻿using FoodWhale_User.Models;
+using FoodWhale_User.ViewModel;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
@@ -15,15 +16,34 @@ namespace FoodWhale_User.Controllers
         public CartController(FoodWhaleContext context) => this.context = context;
         public IActionResult Index()
         {
-            if (HttpContext.Session.GetString("UserSession") != null)
+            if (HttpContext.Session.GetString("AdminSession") != null)
             {
+                var user = TempData["user"] as User;
                 TempData["user"] = JsonConvert.DeserializeObject<User>(HttpContext.Session.GetString("UserSession"));
-                return View();
+                List<Order> order = context.Orders.ToList();
+                List<OrderDetail> orderdetail = context.OrderDetails.ToList();
+                var cart = from o in order
+                           join od in orderdetail on o.OId equals od.OId into table1
+                           from od in table1.DefaultIfEmpty()
+                           where o.UIdNavigation.UName == user.UName
+                           select new ViewModelCart
+                       {
+                           order = o,
+                           orderdetail = od
+                       };
+                return View(cart);
             }
             else
             {
                 return RedirectToAction("Login", "Login");
             }
+
+        }
+
+        [HttpPost]
+        public IActionResult UpdateQty(int quantity)
+        {
+            return View();
         }
     }
 }

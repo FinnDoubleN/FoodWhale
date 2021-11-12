@@ -11,17 +11,21 @@ namespace FoodWhale_User.Controllers
 {
     public class RecipeController : Controller
     {
+
+        private readonly FoodWhaleContext context;
+        public RecipeController(FoodWhaleContext context) => this.context = context;
         // GET: RecipeController
         public IActionResult Index()
         {
+            var model = context.Recipes.ToList();
             if (HttpContext.Session.GetString("UserSession") != null)
             {
                 TempData["user"] = JsonConvert.DeserializeObject<User>(HttpContext.Session.GetString("UserSession"));
-                return View();
+                return View(model);
             }
             else
             {
-                return View();
+                return View(model);
             }
         }
 

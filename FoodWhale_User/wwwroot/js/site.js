@@ -1,44 +1,63 @@
-﻿// Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
-// for details on configuring this project to bundle and minify static web assets.
-
-// Write your JavaScript code.
-function setQuantity(upordown) {    
+﻿function setQuantity(upordown, id) {
     var x = 1000;
+    var totalprice = 0;
+    var itemBox = document.getElementsByClassName('item-box');
     var quantity = document.getElementsByClassName('input-num');
     var money = document.getElementsByClassName('flex-item-price');
-    for (i = 0; i < money.length; i++) {
-        var price = accounting.unformat(money);
-        if (quantity.value > 1) {
+    var total = document.getElementsByClassName('total');
+    var totalbuy = document.getElementsByClassName('seperate-2');
+    var price = accounting.unformat(money[id].innerHTML);
+        if (quantity[id].value > 1) {
             if (upordown == 'up') {
-                ++document.getElementById('quantity').value;
-                price = price * document.getElementById('quantity').value * x;
-                money = accounting.formatMoney(price, "₫");
-                document.getElementById('total').innerText = money;
-                document.getElementById('totalprice').innerText = money;
+                ++document.getElementsByClassName('input-num')[id].value;
+                price = price * document.getElementsByClassName('input-num')[id].value * x;
+                total[id].innerHTML = accounting.formatMoney(price, "₫");
+                var newQty = document.getElementsByClassName('input-num')[id].value;
+                UpdateCart(newQty);
             }
             else if (upordown == 'down') {
-                --document.getElementById('quantity').value;
-                price = price * document.getElementById('quantity').value * x;
-                money = accounting.formatMoney(price, "₫");
-                document.getElementById('total').innerText = money;
-                document.getElementById('totalprice').innerText = money;
+                --document.getElementsByClassName('input-num')[id].value;
+                price = price * document.getElementsByClassName('input-num')[id].value * x;
+                total[id].innerHTML = accounting.formatMoney(price, "₫");
+                var newQty = document.getElementsByClassName('input-num')[id].value;
+                UpdateCart(newQty);
             }
         }
-        else if (quantity.value == 1) {
+        else if (quantity[id].value == 1) {
             if (upordown == 'up') {
-                ++document.getElementById('quantity').value;
-                price = price * document.getElementById('quantity').value * x;
-                money = accounting.formatMoney(price, "₫");
-                document.getElementById('total').innerText = money;
-                document.getElementById('totalprice').innerText = money;
+                ++document.getElementsByClassName('input-num')[id].value;
+                price = price * document.getElementsByClassName('input-num')[id].value * x;
+                total[id].innerHTML = accounting.formatMoney(price, "₫");
+                var newQty = document.getElementsByClassName('input-num')[id].value;
+                UpdateCart (newQty);
             }
         }
         else {
-            document.getElementById('quantity').value = 1;
-            price = price * quantity * x;
-            money = accounting.formatMoney(price, "₫");
-            document.getElementById('total').innerText = money;
-            document.getElementById('totalprice').innerText = money;
+            document.getElementById('input-num')[id].value = 1;
+            price = price * quantity[id] * x;
+            total[id].innerHTML = accounting.formatMoney(price, "₫");
+            var newQty = document.getElementsByClassName('input-num')[id].value;
+            UpdateCart(newQty);
         }
+    for (var i = 0; i < itemBox.length; i++) {
+        var price = accounting.unformat(money[i].innerHTML);
+        price = price * document.getElementsByClassName('input-num')[i].value * x;
+        totalprice = totalprice + price;
+        totalbuy[0].innerHTML = accounting.formatMoney(totalprice, "₫");
     }
+}
+
+function UpdateCart(newQty) {
+    $.ajax({
+        url: "/Cart/UpdateQty",
+        type: "POST",
+        data: { data: newQty },
+        success: function () {
+            alert("Saved");
+        },
+        error: function () {
+            alert('failed');
+            alert(error);
+        }
+    });
 }
