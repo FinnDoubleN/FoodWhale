@@ -1,6 +1,6 @@
 using System;
 
-namespace FoodWhale.Model
+namespace FoodWhale.Models
 {
     public class ErrorViewModel
     {

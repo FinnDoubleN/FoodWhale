@@ -3,28 +3,27 @@ using System.Collections.Generic;
 
 #nullable disable
 
-namespace FoodWhale.Model
+namespace FoodWhale.Models
 {
     public partial class User
     {
         public User()
         {
             Orders = new HashSet<Order>();
-            UserAccesses = new HashSet<UserAccess>();
+            RecipeLikes = new HashSet<RecipeLike>();
         }
 
-        public int Uid { get; set; }
+        public int UId { get; set; }
         public string Email { get; set; }
         public string Password { get; set; }
-        public string Uname { get; set; }
-        public DateTime DoB { get; set; }
+        public string UName { get; set; }
+        public DateTime? DoB { get; set; }
         public string Gender { get; set; }
         public string Address { get; set; }
-        public string City { get; set; }
         public string Phone { get; set; }
-        public string ImageUrl { get; set; }
+        public string Role { get; set; }
 
         public virtual ICollection<Order> Orders { get; set; }
-        public virtual ICollection<UserAccess> UserAccesses { get; set; }
+        public virtual ICollection<RecipeLike> RecipeLikes { get; set; }
     }
 }

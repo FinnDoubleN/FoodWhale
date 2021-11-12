@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Metadata;
 
 #nullable disable
 
-namespace FoodWhale_User.Models
+namespace FoodWhale.Models
 {
     public partial class FoodWhaleContext : DbContext
     {

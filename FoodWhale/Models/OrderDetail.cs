@@ -3,16 +3,16 @@ using System.Collections.Generic;
 
 #nullable disable
 
-namespace FoodWhale.Model
+namespace FoodWhale.Models
 {
     public partial class OrderDetail
     {
-        public string Odid { get; set; }
-        public int Oid { get; set; }
-        public string InId { get; set; }
+        public int OdId { get; set; }
+        public int OId { get; set; }
+        public int InId { get; set; }
         public int Quantity { get; set; }
 
         public virtual Ingredient In { get; set; }
-        public virtual Order OidNavigation { get; set; }
+        public virtual Order OIdNavigation { get; set; }
     }
 }

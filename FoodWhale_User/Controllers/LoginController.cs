@@ -38,7 +38,7 @@ namespace FoodWhale_User.Controllers
             {
                 var user = GetById(model.Email);
                 var UserSession = new User();
-                UserSession.Uid = user.Uid;
+                UserSession.UId = user.UId;
                 // Tao 1 session
                 HttpContext.Session.SetString("UserSession", JsonConvert.SerializeObject(UserSession));
                 return RedirectToAction("Index", "Home");
@@ -56,7 +56,7 @@ namespace FoodWhale_User.Controllers
                     User register = new User();
                     register.Email = model.Email;
                     register.Password = model.Password;
-                    register.Uname = model.Uname;
+                    register.UName = model.UName;
                     context.Users.Add(register);
                     context.SaveChanges();
                 return RedirectToAction("Login", "Login");

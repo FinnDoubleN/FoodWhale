@@ -22,7 +22,7 @@ namespace FoodWhale.Controllers
 
         public User GetById(int id)
         {
-            return context.Users.SingleOrDefault(x => x.Uid == id);
+            return context.Users.SingleOrDefault(x => x.UId == id);
         }
 
         // GET: UserController/Details/5
@@ -35,7 +35,7 @@ namespace FoodWhale.Controllers
                 {
                     return NotFound();
                 }
-                var user = context.Users.FirstOrDefault(m => m.Uid == id);
+                var user = context.Users.FirstOrDefault(m => m.UId == id);
                 if (user == null)
                 {
                     return NotFound();
@@ -87,7 +87,7 @@ namespace FoodWhale.Controllers
             if (HttpContext.Session.GetString("UserSession") != null)
             {
                 TempData["user"] = JsonConvert.DeserializeObject<User>(HttpContext.Session.GetString("UserSession"));
-                if (id != user.Uid)
+                if (id != user.UId)
                 {
                     return NotFound();
                 }
