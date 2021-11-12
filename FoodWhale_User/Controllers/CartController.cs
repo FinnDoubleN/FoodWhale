@@ -22,7 +22,7 @@ namespace FoodWhale_User.Controllers
             }
             else
             {
-                return RedirectToAction("Login", "User");
+                return RedirectToAction("Login", "Login");
             }
         }
     }

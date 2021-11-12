@@ -40,8 +40,8 @@ namespace FoodWhale_User.Controllers
                 var UserSession = new User();
                 UserSession.Uid = user.Uid;
                 // Tao 1 session
-                    HttpContext.Session.SetString("UserSession", JsonConvert.SerializeObject(UserSession));
-                return RedirectToAction("Index", "Recipe");
+                HttpContext.Session.SetString("UserSession", JsonConvert.SerializeObject(UserSession));
+                return RedirectToAction("Index", "Home");
             }
                 return View(model);
         }
@@ -72,7 +72,7 @@ namespace FoodWhale_User.Controllers
         public IActionResult Logout()
         {
             HttpContext.Session.Remove("UserSession");
-            return RedirectToAction("Login");
+            return RedirectToAction("Index", "Home");
         }
         public User GetById(String email)
         {

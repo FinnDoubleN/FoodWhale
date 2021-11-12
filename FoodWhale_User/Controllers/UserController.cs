@@ -44,7 +44,7 @@ namespace FoodWhale.Controllers
             }
             else
             {
-                return RedirectToAction("Login", "User");
+                return RedirectToAction("Login", "Login");
             }
             
         }
@@ -75,7 +75,7 @@ namespace FoodWhale.Controllers
             }
             else
             {
-                return RedirectToAction("Login", "User");
+                return RedirectToAction("Login", "Login");
             }
         }
 
@@ -100,7 +100,7 @@ namespace FoodWhale.Controllers
             }
             else
             {
-                return RedirectToAction("Login", "User");
+                return RedirectToAction("Login", "Login");
             }
         }
 

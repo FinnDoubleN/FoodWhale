@@ -1,0 +1,121 @@
+﻿.details {
+    
+}
+
+.details .details-box {
+    display: flex;
+}
+
+.details .details-box .user-avatar {
+    color: #111111;
+    background-color: #222831;
+    width: 300px;
+    border-radius: 25px;
+    opacity: 0.9;
+    height: 100%;
+    margin-left: 270px;
+}
+
+.details .details-box .user-avatar .avatar-container {
+    padding: 50px;
+}
+
+.details .details-box .user-avatar .avatar-container a {
+    text-align: center;
+    border-style: none;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 0.875rem;
+    letter-spacing: 1px;
+    background-image: none;
+    border-radius: 50px;
+    background-color: #e5e5e5 !important;
+    padding: 10px 30px 10px 30px;
+    display: table;
+}
+
+.avatar {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background-color: #e5e5e5;
+}
+
+.user-name {
+    margin: 30px;
+    text-align: center;
+    color: #fff;
+}
+
+.user-info {
+    margin: 0 12px 0 12px;
+}
+
+.user-cart {
+    margin: 20px 49px 0 49px;
+}
+
+.user-detail {
+    color: #111111;
+    border-radius: 25px;
+    opacity: 1;
+    width: 300px;
+    margin-right: 270px;
+}
+
+.rowUser {
+    margin:0 0 50px 50px;
+    color: #111111;
+    width: 300px;
+}
+
+.user-detail .rowUser .frmUser .order_online a {
+    color: #fff;
+    text-align: center;
+    border-style: none;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 0.875rem;
+    letter-spacing: 1px;
+    background-image: none;
+    border-radius: 50px;
+    background-color: #222831 !important;
+    padding: 10px 30px 10px 30px;
+    display: table;
+    margin: auto;
+}
+
+.user-edit {
+    color: #111111;
+    background-color: #222831;
+    width: 400px;
+    border-radius: 25px;
+    opacity: 0.9;
+    height: 100%;
+    padding: 50px;
+}
+
+.rowUserEdit {
+    color: #fff;
+    width: 300px;
+}
+
+.user-edit .rowUserEdit {
+
+}
+
+.btn-cancel {
+    color: #fff;
+    padding: 0.375rem 0.75rem;
+    background-color: #ff0000;
+    border-radius: 0.25rem;
+    margin-left: 20px;
+    text-align: center;
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
+.btn-cancel:hover {
+    color: #fff;
+    opacity: 0.9;
+}

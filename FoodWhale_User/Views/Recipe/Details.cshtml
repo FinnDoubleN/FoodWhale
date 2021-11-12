@@ -1,0 +1,142 @@
+﻿@{ 
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    <link href="~/css/details.css" rel="stylesheet" />
+}
+
+<div class="page-containers">
+    <div class="page-wrappers">
+        <div class="breadcrumbs">
+            <ul>
+                <li class="">
+                    <a asp-controller="Home" asp-action="Index">FoodWhale/</a>
+                </li>
+                <li class="">
+                    <a asp-controller="Recipe" asp-action="Index">Recipe/</a>
+                </li>
+                <li class="active">
+                    <span>Fried Eggs</span>
+                </li>
+            </ul>
+        </div><!--ex: foodwhale/recipe/eggs-->
+        <div class="product-detail-container">
+            <div class="product-common">
+                <div class="photo-container">
+                    <div class="photo-box">
+                        <div class="main-photo">
+                            <div class="avaBox">
+                                <img src="" />
+                            </div>
+                            <img class="play-video" src="" />
+                        </div>
+                        <div class="side">
+                            <div class="side-item is-main">
+                                <img class="img-fit" src="" />
+                            </div>
+                            <div class="side-item">
+                                <img class="img-fit" src="" />
+                            </div>
+                            <div class="side-item">
+                                <img class="img-fit" src="" />
+                            </div>
+                            <div class="side-item">
+                                <img class="img-fit" src="" />
+                            </div>
+                            <div class="side-item">
+                                <img class="img-fit" src="" />
+                            </div>
+                        </div>
+                    </div><!--ex: anh do an-->
+                </div>
+                <div class="package-info">
+                    <div class="basic-info-box">
+                        <h1 class="names">Fried Eggs</h1>
+                        <div class="stat">
+                            <div class="type">Eggs</div>
+                        </div>
+                        <div class="options-box">
+                            <ul class="custom-horizontal-scrollbar" title="add to cart">
+                                <button class="add-to-cart">
+                                <li class="is-default">Eggs</li>
+                                </button>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="extra-info-box">
+                        <div class="display-flex btn-cart-box">
+                            <button class="add-item-wrapper n-btn btn-add-to-cart btn-add-to-collection ">
+                                <span class="row-1">
+                                    <img class="icon" src="~/img/rating.png" />
+                                    <span class="text display-block">10/10</span>
+                                </span>
+                            </button>
+                            <button class="btn-add-to-cart n-btn btn-add-to-cart"
+                                    title="bam de them vao gio hang" style="background: none !important;">
+                                <span class="row-1">
+                                    <img class="icon" src="~/img/cart.png" />
+                                    <span class="text display-block">Add to Cart</span>
+                                </span>
+                            </button>
+                            <button class="btn-add-to-cart n-btn btn-order "
+                                    title="bam de mua ngay" style="background: rgb(242, 39, 38) !important;">
+                                <span class="row-1">
+                                    <span class="text display-block">Buy Now</span>
+                                </span>
+                            </button>
+                        </div>
+                        <ul class="services-box">
+                            <li class="">
+                                <img src="~/img/difficulties.png" />
+                                Difficulty
+                                <div>Easy</div>
+                            </li>
+                            <li class="active">
+                                <img src="~/img/clock.png" />
+                                Time
+                                <div>5min</div>
+                            </li>
+                            <li class="">
+                                <img src="~/img/rating.png" />
+                                Rating
+                                <div>10/10</div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="product-desc">
+                <div class="title-box">
+                    <div class="active">Huong dan</div>
+                </div>
+                <div class="content-box">
+                    <div class="active">
+                        <ul class="rc-steps-box">
+                            <li>
+                                <span>Step 1:</span>
+                                <div>Rửa sạch các nguyên liệu đã sơ chế, để ráo nước.<br />
+                                Mùi tàu, rau ngổ cắt nhỏ, cà chua cắt múi cau.</div>
+                            </li>
+                            <li>
+                                <span>Step 2:</span>
+                                <div>
+                                    Bật bếp lên cho 1 muỗng canh dầu ăn vào nồi, đợi dầu nóng cho thịt bằm vào xào cho thịt săn lại.<br />
+                                    Sau đó cho 500 ml nước lọc vào đun sôi lên rồi cho dưa chua, cà chua vào nấu trong 5 phút.
+                                </div>
+                            </li>
+                            <li>
+                                <span>Step 3:</span>
+                                <div>
+                                    Tiếp đến, thêm từ từ gói gia vị hoàn chỉnh nấu chua vào khuấy cho gia vị tan đều và nêm nếm lại cho vừa ăn, cho tỏi phi, mùi tàu, rau ngổ vào rồi tắt bếp. <br />
+                                    * Bí quyết: Thêm nước mắm làm dậy mùi thơm và canh thêm đậm đà
+                                </div>
+                            </li>
+                            <li>
+                                <span>Step 4:</span>
+                                <div>Bày món ăn ra tô và thưởng thức.<br /> Ngon hơn khi ăn nóng cùng cơm trắng.</div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
