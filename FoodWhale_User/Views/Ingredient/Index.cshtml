@@ -2,6 +2,7 @@
 @{
     var user = TempData["user"] as User;
     Layout = "~/Views/Shared/_Layout.cshtml";
+    var info = System.Globalization.CultureInfo.GetCultureInfo("vi-VN");
 }
 <div class="heading_container heading_center">
     <h2>
@@ -19,212 +20,30 @@
 
 <div class="filters-content">
     <div class="row grid">
-        <div class="col-sm-6 col-lg-4 all pizza">
-            <div class="box">
-                <div>
-                    <div class="img-box">
-                        <img src="images/f1.png" alt="">
-                    </div>
-                    <div class="detail-box">
-                        <a asp-controller="Recipe" asp-action="Details" style="color:#fff; font-weight:600; font-size: 1.25rem;">
-                            Delicious Pizza
-                        </a>
-                        <p style="color: #fff">
-                            Veniam debitis quaerat officiis quasi cupiditate quo, quisquam velit, magnam voluptatem repellendus
-                            sed eaque
-                        </p>
-                        <div class="options">
-                            <h6>
-                                Difficulty: Medium
-                            </h6>
+       @foreach (var item in Model)
+       {
+            <div class="col-sm-6 col-lg-4 all pizza">
+                <div class="box">
+                    <div>
+                        <div class="img-box">
+                            <img src="@Html.DisplayFor(modelItem => item.Image)" alt="">
+                        </div>
+                        <div class="detail-box">
+                            <a asp-controller="Ingredient" asp-action="Details" style="color:#fff; font-weight:600; font-size: 1.25rem;">
+                                @Html.DisplayFor(modelItem => item.InName)
+                            </a>
+                            <p style="color: #fff">
+                                @Html.DisplayFor(modelItem => item.Description)
+                            </p>
+                            <div class="options">
+                                <h6>
+                                    Price: @string.Format(info, "{0:C}", item.Price) / @Html.DisplayFor(modelItem => item.Type)
+                                </h6>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
+       }
         </div>
-        <div class="col-sm-6 col-lg-4 all burger">
-            <div class="box">
-                <div>
-                    <div class="img-box">
-                        <img src="images/f2.png" alt="">
-                    </div>
-                    <div class="detail-box">
-                        <a asp-controller="Recipe" asp-action="Details" style="color:#fff; font-weight:600; font-size: 1.25rem;">
-                            Delicious Burger
-                        </a>
-                        <p style="color: #fff">
-                            Veniam debitis quaerat officiis quasi cupiditate quo, quisquam velit, magnam voluptatem repellendus
-                            sed eaque
-                        </p>
-                        <div class="options">
-                            <h6>
-                                Difficulty: Medium
-                            </h6>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-sm-6 col-lg-4 all pizza">
-            <div class="box">
-                <div>
-                    <div class="img-box">
-                        <img src="images/f3.png" alt="">
-                    </div>
-                    <div class="detail-box">
-                        <a asp-controller="Recipe" asp-action="Details" style="color:#fff; font-weight:600; font-size: 1.25rem;">
-                            Delicious Pizza
-                        </a>
-                        <p style="color: #fff">
-                            Veniam debitis quaerat officiis quasi cupiditate quo, quisquam velit, magnam voluptatem repellendus
-                            sed eaque
-                        </p>
-                        <div class="options">
-                            <h6>
-                                Difficulty: Medium
-                            </h6>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-sm-6 col-lg-4 all pasta">
-            <div class="box">
-                <div>
-                    <div class="img-box">
-                        <img src="images/f4.png" alt="">
-                    </div>
-                    <div class="detail-box">
-                        <a asp-controller="Recipe" asp-action="Details" style="color:#fff; font-weight:600; font-size: 1.25rem;">
-                            Delicious Pasta
-                        </a>
-                        <p style="color: #fff">
-                            Veniam debitis quaerat officiis quasi cupiditate quo, quisquam velit, magnam voluptatem repellendus
-                            sed eaque
-                        </p>
-                        <div class="options">
-                            <h6>
-                                Difficulty: Medium
-                            </h6>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-sm-6 col-lg-4 all fries">
-            <div class="box">
-                <div>
-                    <div class="img-box">
-                        <img src="images/f5.png" alt="">
-                    </div>
-                    <div class="detail-box">
-                        <a asp-controller="Recipe" asp-action="Details" style="color:#fff; font-weight:600; font-size: 1.25rem;">
-                            French Fries
-                        </a>
-                        <p style="color: #fff">
-                            Veniam debitis quaerat officiis quasi cupiditate quo, quisquam velit, magnam voluptatem repellendus
-                            sed eaque
-                        </p>
-                        <div class="options">
-                            <h6>
-                                Difficulty: Medium
-                            </h6>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-sm-6 col-lg-4 all pizza">
-            <div class="box">
-                <div>
-                    <div class="img-box">
-                        <img src="images/f6.png" alt="">
-                    </div>
-                    <div class="detail-box">
-                        <a asp-controller="Recipe" asp-action="Details" style="color:#fff; font-weight:600; font-size: 1.25rem;">
-                            Delicious Pizza
-                        </a>
-                        <p style="color: #fff">
-                            Veniam debitis quaerat officiis quasi cupiditate quo, quisquam velit, magnam voluptatem repellendus
-                            sed eaque
-                        </p>
-                        <div class="options">
-                            <h6>
-                                Difficulty: Medium
-                            </h6>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-sm-6 col-lg-4 all burger">
-            <div class="box">
-                <div>
-                    <div class="img-box">
-                        <img src="images/f7.png" alt="">
-                    </div>
-                    <div class="detail-box">
-                        <a asp-controller="Recipe" asp-action="Details" style="color:#fff; font-weight:600; font-size: 1.25rem;">
-                            Tasty Burger
-                        </a>
-                        <p style="color: #fff">
-                            Veniam debitis quaerat officiis quasi cupiditate quo, quisquam velit, magnam voluptatem repellendus
-                            sed eaque
-                        </p>
-                        <div class="options">
-                            <h6>
-                                Difficulty: Medium
-                            </h6>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-sm-6 col-lg-4 all burger">
-            <div class="box">
-                <div>
-                    <div class="img-box">
-                        <img src="images/f8.png" alt="">
-                    </div>
-                    <div class="detail-box">
-                        <a asp-controller="Recipe" asp-action="Details" style="color:#fff; font-weight:600; font-size: 1.25rem;">
-                            Tasty Burger
-                        </a>
-                        <p style="color: #fff">
-                            Veniam debitis quaerat officiis quasi cupiditate quo, quisquam velit, magnam voluptatem repellendus
-                            sed eaque
-                        </p>
-                        <div class="options">
-                            <h6>
-                                Difficulty: Medium
-                            </h6>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-sm-6 col-lg-4 all pasta">
-            <div class="box">
-                <div>
-                    <div class="img-box">
-                        <img src="images/f9.png" alt="">
-                    </div>
-                    <div class="detail-box">
-                        <a asp-controller="Recipe" asp-action="Details" style="color:#fff; font-weight:600; font-size: 1.25rem;">
-                            Delicious Pasta
-                        </a>
-                        <p style="color: #fff">
-                            Veniam debitis quaerat officiis quasi cupiditate quo, quisquam velit, magnam voluptatem repellendus
-                            sed eaque
-                        </p>
-                        <div class="options">
-                            <h6>
-                                Difficulty: Medium
-                            </h6>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
 </div>

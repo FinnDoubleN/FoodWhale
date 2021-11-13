@@ -1,4 +1,4 @@
-﻿function setQuantity(upordown, id) {
+﻿function setQuantity(upordown, id, oID, Uid, InId) {
     var x = 1000;
     var totalprice = 0;
     var itemBox = document.getElementsByClassName('item-box');
@@ -12,15 +12,15 @@
                 ++document.getElementsByClassName('input-num')[id].value;
                 price = price * document.getElementsByClassName('input-num')[id].value * x;
                 total[id].innerHTML = accounting.formatMoney(price, "₫");
-                var newQty = document.getElementsByClassName('input-num')[id].value;
-                UpdateCart(newQty);
+                newQty = document.getElementsByClassName('input-num')[id].value;
+                UpdateCart(oID, Uid, InId, newQty);
             }
             else if (upordown == 'down') {
                 --document.getElementsByClassName('input-num')[id].value;
                 price = price * document.getElementsByClassName('input-num')[id].value * x;
                 total[id].innerHTML = accounting.formatMoney(price, "₫");
-                var newQty = document.getElementsByClassName('input-num')[id].value;
-                UpdateCart(newQty);
+                newQty = document.getElementsByClassName('input-num')[id].value;
+                UpdateCart(oID, Uid, InId, newQty);
             }
         }
         else if (quantity[id].value == 1) {
@@ -28,16 +28,16 @@
                 ++document.getElementsByClassName('input-num')[id].value;
                 price = price * document.getElementsByClassName('input-num')[id].value * x;
                 total[id].innerHTML = accounting.formatMoney(price, "₫");
-                var newQty = document.getElementsByClassName('input-num')[id].value;
-                UpdateCart (newQty);
+                newQty = document.getElementsByClassName('input-num')[id].value;
+                UpdateCart(oID, Uid, InId, newQty);
             }
         }
         else {
             document.getElementById('input-num')[id].value = 1;
             price = price * quantity[id] * x;
             total[id].innerHTML = accounting.formatMoney(price, "₫");
-            var newQty = document.getElementsByClassName('input-num')[id].value;
-            UpdateCart(newQty);
+            newQty = document.getElementsByClassName('input-num')[id].value;
+            UpdateCart(oID, Uid, InId, newQty);
         }
     for (var i = 0; i < itemBox.length; i++) {
         var price = accounting.unformat(money[i].innerHTML);
@@ -47,17 +47,27 @@
     }
 }
 
-function UpdateCart(newQty) {
-    $.ajax({
-        url: "/Cart/UpdateQty",
-        type: "POST",
-        data: { data: newQty },
-        success: function () {
-            alert("Saved");
-        },
-        error: function () {
-            alert('failed');
-            alert(error);
-        }
-    });
+function UpdateCart(oID, Uid, InId, newQty) {
+    var update = new Object();
+    update.oID = oID;
+    update.Uid = Uid;
+    update.InId = InId;
+    update.newQty = newQty.replace(/[&\/\\#,+()$~%.'":*?<>{}]/g, '');
+    var json = JSON.stringify(update);
+    if (update != null) {
+        $.ajax({     
+            url: "../../Cart/UpdateQty",
+            data: json,
+            method: "POST",
+            dataType: "json",
+            contentType: "application/json; charset=utf-8",
+            success: function () {    
+                alert('Success');
+            },  
+            error: function (msg) {
+                alert(JSON.stringify(msg));
+            }
+        });
+    }
+
 }

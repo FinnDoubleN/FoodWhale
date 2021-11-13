@@ -1,6 +1,19 @@
-﻿@{ 
+﻿@model IEnumerable<FoodWhale_User.ViewModel.ViewModelCart>
+@{
     var user = TempData["user"] as User;
     Layout = "~/Views/Shared/_Layout.cshtml";
+    var info = System.Globalization.CultureInfo.GetCultureInfo("vi-VN");
+    var totalItem = 0;
+    var totalPrice = 0;
+    var oID = 0;
+    var Uid = 0;
+    foreach (var item in Model)
+    {
+        totalItem++;
+        totalPrice = totalPrice + (int)item.ingredient.Price * item.orderdetail.Quantity;
+        oID = item.order.OId;
+        Uid = item.order.UId;
+    }
 }
 
 <div class="cart-main">
@@ -12,116 +25,73 @@
         <div class="nav-5">Action</div>
     </div>
     <div class="cart-item">
-        <div class="item-box">
-            <div class="item-box-layout">
-                <div class="item-flex">
-                    <div class="flex-1">
-                        <div class="flex-item">
-                            <a title="Bút màu Marker Touch Cool họa cụ tô màu dạ vẽ tranh anime Túi Vải Bộ 30/60/80 Lalunavn-B66" href="/Bút-màu-Marker-Touch-Cool-họa-cụ-tô-màu-dạ-vẽ-tranh-anime-Túi-Vải-Bộ-30-60-80-Lalunavn-B66-i.90096753.3600775424">
-                                <div class="flex-item-img" style="background-image: url(" https: //cf.shopee.vn/file/2f89240aec683442daa9f9e8662d32f4_tn");"></div>
-                            </a>
-                            <div class="flex-item-name">
-                                <a class="flex-item-link" title="Bút màu Marker Touch Cool họa cụ tô màu dạ vẽ tranh anime Túi Vải Bộ 30/60/80 Lalunavn-B66" href="/Bút-màu-Marker-Touch-Cool-họa-cụ-tô-màu-dạ-vẽ-tranh-anime-Túi-Vải-Bộ-30-60-80-Lalunavn-B66-i.90096753.3600775424">"Bút màu Marker Touch Cool họa cụ tô màu dạ vẽ tranh anime Túi Vải Bộ 30/60/80 Lalunavn-B66"</a>
+        @{
+            var i = 0;
+            foreach (var item in Model)
+            {
+                <div class="item-box">
+                    <div class="item-box-layout">
+                        <div class="item-flex">
+                            <div class="flex-1">
+                                <div class="flex-item">
+                                    <a title="@Html.DisplayFor(modelItem => item.ingredient.InName)" asp-action="Details" asp-controller="Cart" asp-route-id="@Html.DisplayFor(modelItem => item.ingredient.InId)">
+                                        <div class="flex-item-img" style="background-image: url(@Html.DisplayFor(modelItem => item.ingredient.Image));"></div>
+                                    </a>
+                                    <div class="flex-item-name">
+                                        <a class="flex-item-link" title="@Html.DisplayFor(modelItem => item.ingredient.InName)" asp-action="Details" asp-controller="Cart" asp-route-id="@Html.DisplayFor(modelItem => item.ingredient.InId)">"@Html.DisplayFor(modelItem => item.ingredient.InName)"</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="flex-2">
+                                <div>
+                                    <span class="flex-item-price">
+                                        @string.Format(info, "{0:C}", item.ingredient.Price)
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="flex-3">
+                                <div class="cart-input-quantity">
+                                    <button class="input" onclick="setQuantity('down', @i, @oID, @Uid, @item.ingredient.InId);">
+                                        <svg enable-background="new 0 0 10 10" viewBox="0 0 10 10" x="0" y="0" class="svg-icon">
+                                            <polygon points="4.5 4.5 3.5 4.5 0 4.5 0 5.5 3.5 5.5 4.5 5.5 10 5.5 10 4.5">
+                                            </polygon>
+                                        </svg>
+                                    </button>
+                                    <input class="input input-num" value=@Html.DisplayFor(modelItem => item.orderdetail.Quantity) readonly />
+                                    <button class="input" onclick="setQuantity('up', @i, @oID, @Uid, @item.ingredient.InId);">
+                                        <svg enable-background="new 0 0 10 10" viewBox="0 0 10 10" x="0" y="0" class="svg-icon">
+                                            <polygon points="10 4.5 5.5 4.5 5.5 0 4.5 0 4.5 4.5 0 4.5 0 5.5 4.5 5.5 4.5 10 5.5 10 5.5 5.5 10 5.5">
+                                            </polygon>
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="flex-4">
+                                <span class="total">
+                                    @string.Format(info, "{0:C}", (item.ingredient.Price * item.orderdetail.Quantity))
+                                </span>
+                            </div>
+                            <div class="flex-5">
+                                <button class="btn-delete">
+                                    Delete
+                                </button>
                             </div>
                         </div>
                     </div>
-                    <div class="flex-2">
-                        <div>
-                            <span class="flex-item-price">
-                                ₫105.000
-                            </span>
-                        </div>
-                    </div>
-                    <div class="flex-3">
-                        <div class="cart-input-quantity">
-                            <button class="input" onclick="setQuantity('down', '0');">
-                                <svg enable-background="new 0 0 10 10" viewBox="0 0 10 10" x="0" y="0" class="svg-icon">
-                                    <polygon points="4.5 4.5 3.5 4.5 0 4.5 0 5.5 3.5 5.5 4.5 5.5 10 5.5 10 4.5">
-                                    </polygon>
-                                </svg>
-                            </button>
-                            <input class="input input-num" value="1" readonly />
-                            <button class="input" onclick="setQuantity('up', '0');">
-                                <svg enable-background="new 0 0 10 10" viewBox="0 0 10 10" x="0" y="0" class="svg-icon">
-                                    <polygon points="10 4.5 5.5 4.5 5.5 0 4.5 0 4.5 4.5 0 4.5 0 5.5 4.5 5.5 4.5 10 5.5 10 5.5 5.5 10 5.5">
-                                    </polygon>
-                                </svg>
-                            </button>
-                        </div>
-                    </div>
-                    <div class="flex-4">
-                        <span class="total">
-                            ₫105.000
-                        </span>
-                    </div>
-                    <div class="flex-5">
-                        <button class="btn-delete">
-                            Delete
-                        </button>
-                    </div>
                 </div>
-            </div>
-        </div>
-        <div class="item-box">
-            <div class="item-box-layout">
-                <div class="item-flex">
-                    <div class="flex-1">
-                        <div class="flex-item">
-                            <a title="Bút màu Marker Touch Cool họa cụ tô màu dạ vẽ tranh anime Túi Vải Bộ 30/60/80 Lalunavn-B66" href="/Bút-màu-Marker-Touch-Cool-họa-cụ-tô-màu-dạ-vẽ-tranh-anime-Túi-Vải-Bộ-30-60-80-Lalunavn-B66-i.90096753.3600775424">
-                                <div class="flex-item-img" style="background-image: url(" https: //cf.shopee.vn/file/2f89240aec683442daa9f9e8662d32f4_tn");"></div>
-                            </a>
-                            <div class="flex-item-name">
-                                <a class="flex-item-link" title="Bút màu Marker Touch Cool họa cụ tô màu dạ vẽ tranh anime Túi Vải Bộ 30/60/80 Lalunavn-B66" href="/Bút-màu-Marker-Touch-Cool-họa-cụ-tô-màu-dạ-vẽ-tranh-anime-Túi-Vải-Bộ-30-60-80-Lalunavn-B66-i.90096753.3600775424">"Bút màu Marker Touch Cool họa cụ tô màu dạ vẽ tranh anime Túi Vải Bộ 30/60/80 Lalunavn-B66"</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="flex-2">
-                        <div>
-                            <span class="flex-item-price">
-                                ₫75.000
-                            </span>
-                        </div>
-                    </div>
-                    <div class="flex-3">
-                        <div class="cart-input-quantity">
-                            <button class="input" onclick="setQuantity('down', '1');">
-                                <svg enable-background="new 0 0 10 10" viewBox="0 0 10 10" x="0" y="0" class="svg-icon">
-                                    <polygon points="4.5 4.5 3.5 4.5 0 4.5 0 5.5 3.5 5.5 4.5 5.5 10 5.5 10 4.5">
-                                    </polygon>
-                                </svg>
-                            </button>
-                            <input class="input input-num" value="1" readonly />
-                            <button class="input" onclick="setQuantity('up', '1');">
-                                <svg enable-background="new 0 0 10 10" viewBox="0 0 10 10" x="0" y="0" class="svg-icon">
-                                    <polygon points="10 4.5 5.5 4.5 5.5 0 4.5 0 4.5 4.5 0 4.5 0 5.5 4.5 5.5 4.5 10 5.5 10 5.5 5.5 10 5.5">
-                                    </polygon>
-                                </svg>
-                            </button>
-                        </div>
-                    </div>
-                    <div class="flex-4">
-                        <span class="total">
-                            ₫75.000
-                        </span>
-                    </div>
-                    <div class="flex-5">
-                        <button class="btn-delete">
-                            Delete
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
+                i = i + 1;
+            }
+        }
     </div>
     <div class="cart-buy cart-buy-sticky">
         <div class="cart-buy-grid">
             <div class="cart-buy-total">
                 <div class="cart-buy-seperate">
                     <div class="seperate-1">
-                        Total (1 Product):
+                        Total (@totalItem Product):
                     </div>
                     <div class="seperate-2">
-                        ₫75.000
+                        @string.Format(info, "{0:C}", (totalPrice))
                     </div>
                 </div>
             </div>

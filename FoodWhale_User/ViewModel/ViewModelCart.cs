@@ -10,5 +10,6 @@ namespace FoodWhale_User.ViewModel
     {
         public Order order { get; set; }
         public OrderDetail orderdetail { get; set; }
+        public Ingredient ingredient { get; set; }
     }
 }
