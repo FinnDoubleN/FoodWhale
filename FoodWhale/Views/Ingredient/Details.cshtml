@@ -1,4 +1,4 @@
-﻿@model FoodWhale.Model.Ingredient
+﻿@model FoodWhale.Models.Ingredient
 
 @{
     ViewData["Title"] = "Details";
@@ -16,12 +16,6 @@
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.InName)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Quantity)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Quantity)
         </dd>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.Price)

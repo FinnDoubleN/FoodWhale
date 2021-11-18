@@ -1,6 +1,7 @@
 ﻿using FoodWhale.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,23 +16,16 @@ namespace FoodWhale.Controllers
         //Show all information
         public ActionResult Index()
         {
-            var model = context.Categories.ToList();
+            if (HttpContext.Session.GetString("AdminSession") != null)
+            {
+                TempData["admin"] = JsonConvert.DeserializeObject<Admin>(HttpContext.Session.GetString("AdminSession"));
+                var model = context.Categories.ToList();
             return View(model);
-        }
-
-        // GET: UserController/Details/5
-        public ActionResult Details(String id)
-        {
-            if (id == null)
-            {
-                return NotFound();
             }
-            var category = context.Categories.FirstOrDefault(m => m.Cid == id);
-            if (category == null)
+            else
             {
-                return NotFound();
+                return RedirectToAction("Login", "Login");
             }
-            return View(category);
         }
 
         // GET: UserController/Create
@@ -43,53 +37,49 @@ namespace FoodWhale.Controllers
         // POST: UserController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(Category categoty)
+        public ActionResult Create(Category category)
         {
             if (ModelState.IsValid)
             {
-                context.Add(categoty);
+                context.Add(category);
                 context.SaveChanges();
                 return RedirectToAction(nameof(Index));
             }
-            return View(categoty);
+            return View(category);
         }
 
         // GET: UserController/Edit/5
-        public ActionResult Edit(String id)
+        public ActionResult Edit(int id)
         {
-            if (id == null)
+            var category = context.Categories.Find(id);
+            if (category == null)
             {
                 return NotFound();
             }
-            var categoty = context.Categories.Find(id);
-            if (categoty == null)
-            {
-                return NotFound();
-            }
-            return View(categoty);
+            return View(category);
         }
 
         // POST: UserController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(String id, Category categoty)
+        public ActionResult Edit(int id, Category category)
         {
-            if (id != categoty.Cid)
+            if (id != category.CategoryId)
             {
                 return NotFound();
             }
             if (ModelState.IsValid)
             {
-                context.Update(categoty);
+                context.Update(category);
                 context.SaveChanges();
                 return RedirectToAction(nameof(Index));
             }
-            return View(categoty);
+            return View(category);
 
         }
 
         // GET: UserController/Delete/5
-        public ActionResult Delete(String id)
+        public ActionResult Delete(int id)
         {
             var category = context.Categories.Find(id);
             context.Categories.Remove(category);

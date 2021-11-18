@@ -1,4 +1,4 @@
-﻿@model IEnumerable<FoodWhale.Model.Recipe>
+﻿@model IEnumerable<FoodWhale.Models.Recipe>
 
 @{
     ViewData["Title"] = "Index";
@@ -11,16 +11,13 @@
         <thead>
             <tr>
                 <th>
-                    ID
+                    Recipe ID
                 </th>
                 <th>
-                    Name
+                    Recipe Name
                 </th>
                 <th>
-                    Description
-                </th>
-                <th>
-                    Video URL
+                    Image
                 </th>
                 <th>
                     Difficulty
@@ -29,10 +26,13 @@
                     Time
                 </th>
                 <th>
-                    Rating
+                    LikeCount
                 </th>
                 <th>
-                    Category
+                    Description
+                </th>
+                <th>
+                    Category ID
                 </th>
                 <th></th>
             </tr>
@@ -42,16 +42,13 @@
             {
                 <tr>
                     <td>
-                        @Html.DisplayFor(modelItem => item.Rid)
+                        @Html.DisplayFor(modelItem => item.RId)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.Rname)
+                        @Html.DisplayFor(modelItem => item.RName)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.Rdescription)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.VideoUrl)
+                        @Html.DisplayFor(modelItem => item.Image)
                     </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.Difficulty)
@@ -60,14 +57,17 @@
                         @Html.DisplayFor(modelItem => item.Time)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.Rating)
+                        @Html.DisplayFor(modelItem => item.LikeCount)
                     </td>
                     <td>
-                        <a asp-controller="Category" asp-action="Index">  @Html.DisplayFor(modelItem => item.CidNavigation.Cid)  </a>
+                        @Html.DisplayFor(modelItem => item.RDescription)
                     </td>
                     <td>
-                        <a asp-action="Edit" asp-route-id="@item.Rid">Edit</a><br />
-                        <a asp-action="Delete" asp-route-id="@item.Rid">Delete</a>
+                        @Html.DisplayFor(modelItem => item.CIdNavigation.CName)
+                    </td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.RId">Edit</a> |
+                        <a asp-action="Delete" asp-route-id="@item.RId">Delete</a>
                     </td>
                 </tr>
             }

@@ -17,22 +17,37 @@ namespace FoodWhale_User.Controllers
         // GET: RecipeController
         public IActionResult Index()
         {
-            var model = context.Recipes.ToList();
+
             if (HttpContext.Session.GetString("UserSession") != null)
             {
                 TempData["user"] = JsonConvert.DeserializeObject<User>(HttpContext.Session.GetString("UserSession"));
+                var model = context.Recipes.ToList();
                 return View(model);
             }
             else
             {
+                var model = context.Recipes.ToList();
                 return View(model);
             }
+        }
+
+
+        public ActionResult View(int id)
+        {
+            var model = context.Recipes.ToList();
+            return View(model);
+        }
+
+        public Recipe GetById(int id)
+        {
+            return context.Recipes.SingleOrDefault(x => x.RId == id);
         }
 
         // GET: RecipeController/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            var model = GetById(id);
+            return View(model);
         }
 
         // GET: RecipeController/Create

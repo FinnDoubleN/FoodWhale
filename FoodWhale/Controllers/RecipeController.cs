@@ -1,6 +1,7 @@
-﻿using FoodWhale.Model;
+﻿using FoodWhale.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,23 +16,17 @@ namespace FoodWhale.Controllers
         //Show all information
         public ActionResult Index()
         {
-            var model = context.Recipes.ToList();
+            if (HttpContext.Session.GetString("AdminSession") != null)
+            {
+                TempData["admin"] = JsonConvert.DeserializeObject<Admin>(HttpContext.Session.GetString("AdminSession"));
+                var model = context.Recipes.ToList();
             return View(model);
-        }
+            }
+            else
+            {
+                return RedirectToAction("Login", "Login");
 
-        // GET: UserController/Details/5
-        public ActionResult Details(int id)
-        {
-            if (id == 0)
-            {
-                return NotFound();
             }
-            var recipe = context.Recipes.FirstOrDefault(m => m.Rid == id);
-            if (recipe == null)
-            {
-                return NotFound();
-            }
-            return View(recipe);
         }
 
         // GET: UserController/Create
@@ -57,10 +52,6 @@ namespace FoodWhale.Controllers
         // GET: UserController/Edit/5
         public ActionResult Edit(int id)
         {
-            if (id == 0)
-            {
-                return NotFound();
-            }
             var recipe = context.Recipes.Find(id);
             if (recipe == null)
             {
@@ -74,7 +65,7 @@ namespace FoodWhale.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit(int id, Recipe recipe)
         {
-            if (id != recipe.Rid)
+            if (id != recipe.RId)
             {
                 return NotFound();
             }

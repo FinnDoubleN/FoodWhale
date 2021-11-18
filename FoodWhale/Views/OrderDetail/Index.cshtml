@@ -1,4 +1,4 @@
-﻿@model IEnumerable<FoodWhale.Model.OrderDetail>
+﻿@model IEnumerable<FoodWhale.Models.OrderDetail>
 
 @{
     ViewData["Title"] = "Index";
@@ -11,7 +11,7 @@
         <thead>
             <tr>
                 <th>
-                    ID
+                    Order Detail ID
                 </th>
                 <th>
                     Order ID
@@ -28,24 +28,25 @@
         <tbody>
             @foreach (var item in Model)
             {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Odid)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.OidNavigation.Oid)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.In.InId)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Quantity)
-                </td>
-                <td>
-                    <a asp-action="Edit" asp-route-id="@item.Odid">Edit</a><br />
-                    <a asp-action="Delete" asp-route-id="@item.Odid">Delete</a>
-                </td>
-            </tr>
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.OdId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.OIdNavigation.OId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.InId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Quantity)
+                    </td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.OdId">Edit</a> |
+                        <a asp-action="Delete" asp-route-id="@item.OdId">Delete</a>
+                    </td>
+                </tr>
             }
         </tbody>
     </table>
+</div>

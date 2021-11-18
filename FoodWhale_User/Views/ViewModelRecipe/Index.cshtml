@@ -1,0 +1,49 @@
+﻿@model IEnumerable<FoodWhale_User.Models.ViewModelRecipe>
+@{ 
+    var user = TempData["user"] as User;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    String check = "";
+}
+<div class="heading_container heading_center">
+    <h2>
+        Our Recipe
+    </h2>
+</div>
+
+<ul class="filters_menu">
+    <li class="active" data-filter="*">All</li>
+    @foreach (var item in Model)
+
+    {if (item.category.CName == check) { } else {
+<li data-filter=".@Html.DisplayFor(modelItem => item.category.CName)">@Html.DisplayFor(modelItem => item.category.CName)</li> }
+        check = item.category.CName;
+    }
+</ul>
+<div class="filters-content">
+    <div class="row grid">
+        @foreach (var item in Model)
+        {
+<div class="col-sm-6 col-lg-4 all @Html.DisplayFor(modelItem => item.category.CName)">
+    <div class="box">
+        <div>
+            <div class="img-box">
+                <img src="@Html.DisplayFor(modelItem => item.recipe.Image)" alt="">
+            </div>
+            <div class="detail-box">
+                <a asp-controller="ViewModelRecipe" asp-action="Details" asp-route-id="@item.recipe.RId" style="color:#fff; font-weight:600; font-size: 1.25rem;">
+                    @Html.DisplayFor(modelItem => item.recipe.RName)
+                </a>
+                <p style="color: #fff">
+                    Time: @Html.DisplayFor(modelItem => item.recipe.Time) Minutes
+                </p>
+                <div class="options">
+                    <h6>
+                        Difficulty: @Html.DisplayFor(modelItem => item.recipe.Difficulty)
+                    </h6>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>}
+    </div>
+</div>

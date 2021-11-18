@@ -1,4 +1,4 @@
-﻿@model FoodWhale.Model.Recipe
+﻿@model FoodWhale.Models.Recipe
 
 @{
     ViewData["Title"] = "Create";
@@ -11,24 +11,18 @@
             <form asp-action="Create">
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                 <div class="form-group">
-                    <label asp-for="Rid" class="control-label"></label>
-                    <input asp-for="Rid" class="form-control" />
-                    <span asp-validation-for="Rid" class="text-danger"></span>
+                    <label asp-for="RName" class="control-label"></label>
+                    <input asp-for="RName" class="form-control" />
+                    <span asp-validation-for="RName" class="text-danger"></span>
                 </div>
                 <div class="form-group">
-                    <label asp-for="Rname" class="control-label"></label>
-                    <input asp-for="Rname" class="form-control" />
-                    <span asp-validation-for="Rname" class="text-danger"></span>
+                    <label asp-for="CId" class="control-label"></label>
+                    <select asp-for="CId" class="form-control" asp-items="ViewBag.CId"></select>
                 </div>
                 <div class="form-group">
-                    <label asp-for="Rdescription" class="control-label"></label>
-                    <input asp-for="Rdescription" class="form-control" />
-                    <span asp-validation-for="Rdescription" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <label asp-for="VideoUrl" class="control-label"></label>
-                    <input asp-for="VideoUrl" class="form-control" />
-                    <span asp-validation-for="VideoUrl" class="text-danger"></span>
+                    <label asp-for="Image" class="control-label"></label>
+                    <input asp-for="Image" class="form-control" />
+                    <span asp-validation-for="Image" class="text-danger"></span>
                 </div>
                 <div class="form-group">
                     <label asp-for="Difficulty" class="control-label"></label>
@@ -41,13 +35,9 @@
                     <span asp-validation-for="Time" class="text-danger"></span>
                 </div>
                 <div class="form-group">
-                    <label asp-for="Cid" class="control-label"></label>
-                    <select asp-for="Cid" class="form-control" asp-items="ViewBag.Cid"></select>
-                </div>
-                <div class="form-group">
-                    <label asp-for="Rating" class="control-label"></label>
-                    <input asp-for="Rating" class="form-control" />
-                    <span asp-validation-for="Rating" class="text-danger"></span>
+                    <label asp-for="RDescription" class="control-label"></label>
+                    <input asp-for="RDescription" class="form-control" />
+                    <span asp-validation-for="RDescription" class="text-danger"></span>
                 </div>
                 <div class="form-group">
                     <input type="submit" value="Create" class="btn btn-primary" />
@@ -56,9 +46,9 @@
         </div>
     </div>
 </div>
-<div style="margin-left:21rem">
-    <a asp-action="Index">Back to List</a>
-</div>
+    <div style="margin-left: 21rem">
+        <a asp-action="Index">Back to List</a>
+    </div>
 
     @section Scripts {
         @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

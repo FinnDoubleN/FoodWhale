@@ -1,0 +1,36 @@
+﻿@{ var user = TempData["user"] as User;
+                ViewData["Title"] = "Details";
+                Layout = "~/Views/Shared/_Layout.cshtml";
+               }
+<section class="about_section layout_padding">
+    <div class="container  ">
+        <div class="row">
+            <div class="col-md-6 ">
+                <div class="img-box">
+                    <img src="~/img/about-img.png" alt="">
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="detail-box">
+                    <div class="heading_container">
+                        <h2>
+                            We Are FoodWhale
+                        </h2>
+                    </div>
+                    <p>
+                        We are a team from SE1508 in FPT University. We called ourselve FoodWhale
+                        which mean there are a lot of food recipe and ingredient in this website. It's also the way
+                        we play the word "well" with "whale".
+                    </p>
+                    <p>
+                        If you like our website, you can contact or feedback us through the email
+                        or phone.
+                    </p>
+                    <p>
+                        Remember, our knowledge about food is like a fish in a sea.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

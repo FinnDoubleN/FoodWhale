@@ -1,6 +1,7 @@
-﻿using FoodWhale.Model;
+﻿using FoodWhale.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,30 +9,24 @@ using System.Threading.Tasks;
 
 namespace FoodWhale.Controllers
 {
-    public class UserAccessController : Controller
+    public class RecipeLikeController : Controller
     {
         private readonly FoodWhaleContext context;
-        public UserAccessController(FoodWhaleContext context) => this.context = context;
+        public RecipeLikeController(FoodWhaleContext context) => this.context = context;
         //Show all information
         public ActionResult Index()
         {
-            var model = context.UserAccesses.ToList();
+            if (HttpContext.Session.GetString("AdminSession") != null)
+            {
+                TempData["admin"] = JsonConvert.DeserializeObject<Admin>(HttpContext.Session.GetString("AdminSession"));
+                var model = context.RecipeLikes.ToList();
             return View(model);
-        }
+            }
+            else
+            {
+                return RedirectToAction("Login", "Login");
 
-        // GET: UserController/Details/5
-        public ActionResult Details(String id)
-        {
-            if (id == null)
-            {
-                return NotFound();
             }
-            var useraccess = context.UserAccesses.FirstOrDefault(m => m.Aid == id);
-            if (useraccess == null)
-            {
-                return NotFound();
-            }
-            return View(useraccess);
         }
 
         // GET: UserController/Create
@@ -43,56 +38,52 @@ namespace FoodWhale.Controllers
         // POST: UserController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(UserAccess useraccess)
+        public ActionResult Create(RecipeLike recipelike)
         {
             if (ModelState.IsValid)
             {
-                context.Add(useraccess);
+                context.Add(recipelike);
                 context.SaveChanges();
                 return RedirectToAction(nameof(Index));
             }
-            return View(useraccess);
+            return View(recipelike);
         }
 
         // GET: UserController/Edit/5
-        public ActionResult Edit(String id)
+        public ActionResult Edit(int id)
         {
-            if (id == null)
+            var recipelike = context.RecipeLikes.Find(id);
+            if (recipelike == null)
             {
                 return NotFound();
             }
-            var useraccess = context.UserAccesses.Find(id);
-            if (useraccess == null)
-            {
-                return NotFound();
-            }
-            return View(useraccess);
+            return View(recipelike);
         }
 
         // POST: UserController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(String id, UserAccess useraccess)
+        public ActionResult Edit(int id, RecipeLike recipelike)
         {
-            if (id != useraccess.Aid)
+            if (id != recipelike.RlId)
             {
                 return NotFound();
             }
             if (ModelState.IsValid)
             {
-                context.Update(useraccess);
+                context.Update(recipelike);
                 context.SaveChanges();
                 return RedirectToAction(nameof(Index));
             }
-            return View(useraccess);
+            return View(recipelike);
 
         }
 
         // GET: UserController/Delete/5
-        public ActionResult Delete(String id)
+        public ActionResult Delete(int id)
         {
-            var useraccess = context.UserAccesses.Find(id);
-            context.UserAccesses.Remove(useraccess);
+            var recipelike = context.RecipeLikes.Find(id);
+            context.RecipeLikes.Remove(recipelike);
             context.SaveChanges();
             return RedirectToAction(nameof(Index));
         }

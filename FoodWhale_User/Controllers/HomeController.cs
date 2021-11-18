@@ -33,7 +33,7 @@ namespace FoodWhale_User.Controllers
             }
         }
 
-        public IActionResult Privacy()
+        public IActionResult About()
         {
             if (HttpContext.Session.GetString("UserSession") != null)
             {

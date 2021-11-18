@@ -52,7 +52,7 @@ function UpdateCart(oID, Uid, InId, newQty) {
     update.oID = oID;
     update.Uid = Uid;
     update.InId = InId;
-    update.newQty = newQty.replace(/[&\/\\#,+()$~%.'":*?<>{}]/g, '');
+    update.newQty = newQty;
     var json = JSON.stringify(update);
     if (update != null) {
         $.ajax({     
@@ -62,10 +62,10 @@ function UpdateCart(oID, Uid, InId, newQty) {
             dataType: "json",
             contentType: "application/json; charset=utf-8",
             success: function () {    
-                alert('Success');
+                console.log('Success');
             },  
             error: function (msg) {
-                alert(JSON.stringify(msg));
+                console.log(JSON.stringify(msg));
             }
         });
     }

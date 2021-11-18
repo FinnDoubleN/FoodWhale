@@ -1,6 +1,7 @@
-﻿using FoodWhale.Model;
+﻿using FoodWhale.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,24 +13,34 @@ namespace FoodWhale.Controllers
     {
         private FoodWhaleContext context;
         public UserController(FoodWhaleContext context) => this.context = context;
-        // Show all information
-        public ActionResult Index()
+        public IActionResult Index()
         {
-            var model = context.Users.ToList();
+            if (HttpContext.Session.GetString("AdminSession") != null)
+            {
+                TempData["admin"] = JsonConvert.DeserializeObject<Admin>(HttpContext.Session.GetString("AdminSession"));
+                var model = context.Users.ToList();
             return View(model);
+            }
+            else
+            {
+                return RedirectToAction("Login", "Login");
+            }
+        }
+        public ActionResult Create()
+        {
+            return View();
         }
 
-        // GET: UserController/Details/5
-        public ActionResult Details(int id)
+        // POST: UserController/Create
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Create(User user)
         {
-            if (id == 0)
+            if (ModelState.IsValid)
             {
-                return NotFound();
-            }
-            var user = context.Users.FirstOrDefault(m => m.Uid == id);
-            if (user == null)
-            {
-                return NotFound();
+                context.Add(user);
+                context.SaveChanges();
+                return RedirectToAction(nameof(Index));
             }
             return View(user);
         }
@@ -54,7 +65,7 @@ namespace FoodWhale.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit(int id, User user)
         {
-            if (id != user.Uid)
+            if (id != user.UId)
             {
                 return NotFound();
             }
@@ -65,6 +76,15 @@ namespace FoodWhale.Controllers
                 return RedirectToAction(nameof(Index));
             }
             return View(user);
+        }
+
+        // GET: UserController/Delete/5
+        public ActionResult Delete(int id)
+        {
+            var user = context.Users.Find(id);
+            context.Users.Remove(user);
+            context.SaveChanges();
+            return RedirectToAction(nameof(Index));
         }
     }
 }

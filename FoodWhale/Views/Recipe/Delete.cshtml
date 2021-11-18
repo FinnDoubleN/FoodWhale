@@ -1,4 +1,4 @@
-﻿@model FoodWhale.Model.Recipe
+﻿@model FoodWhale.Models.Recipe
 
 @{
     ViewData["Title"] = "Delete";
@@ -13,22 +13,16 @@
     <hr />
     <dl class="row">
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Rname)
+            @Html.DisplayNameFor(model => model.RName)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Rname)
+            @Html.DisplayFor(model => model.RName)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Rdescription)
+            @Html.DisplayNameFor(model => model.Image)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Rdescription)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.VideoUrl)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.VideoUrl)
+            @Html.DisplayFor(model => model.Image)
         </dd>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.Difficulty)
@@ -43,21 +37,27 @@
             @Html.DisplayFor(model => model.Time)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Rating)
+            @Html.DisplayNameFor(model => model.LikeCount)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Rating)
+            @Html.DisplayFor(model => model.LikeCount)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.CidNavigation)
+            @Html.DisplayNameFor(model => model.RDescription)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.CidNavigation.Cid)
+            @Html.DisplayFor(model => model.RDescription)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.CIdNavigation)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.CIdNavigation.CName)
         </dd class>
     </dl>
     
     <form asp-action="Delete">
-        <input type="hidden" asp-for="Rid" />
+        <input type="hidden" asp-for="RId" />
         <input type="submit" value="Delete" class="btn btn-danger" /> |
         <a asp-action="Index">Back to List</a>
     </form>

@@ -1,4 +1,4 @@
-﻿@model IEnumerable<FoodWhale.Model.Ingredient>
+﻿@model IEnumerable<FoodWhale.Models.Ingredient>
 
 @{
     ViewData["Title"] = "Index";
@@ -17,10 +17,22 @@
                     Ingredient Name
                 </th>
                 <th>
-                    Quantity
+                    Image
+                </th>
+                <th>
+                    Type
                 </th>
                 <th>
                     Price
+                </th>
+                <th>
+                    Description
+                </th>
+                <th>
+                    Guideline
+                </th>
+                <th>
+                    Category
                 </th>
                 <th></th>
             </tr>
@@ -36,13 +48,25 @@
                     @Html.DisplayFor(modelItem => item.InName)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Quantity)
+                    @Html.DisplayFor(modelItem => item.Image)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Type)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Price)
                 </td>
                 <td>
-                    <a asp-action="Edit" asp-route-id="@item.InId">Edit</a><br />
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Guideline)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Category.CName)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.InId">Edit</a>
                     <a asp-action="Delete" asp-route-id="@item.InId">Delete</a>
                 </td>
             </tr>

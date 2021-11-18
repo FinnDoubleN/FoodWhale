@@ -1,4 +1,4 @@
-﻿@model IEnumerable<FoodWhale.Model.Order>
+﻿@model IEnumerable<FoodWhale.Models.Order>
 
 @{
     ViewData["Title"] = "Index";
@@ -11,7 +11,7 @@
         <thead>
             <tr>
                 <th>
-                    ID
+                    Order ID
                 </th>
                 <th>
                     User ID
@@ -30,10 +30,10 @@
             {
             <tr>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Oid)
+                    @Html.DisplayFor(modelItem => item.OId)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.UidNavigation.Uid)
+                    @Html.DisplayFor(modelItem => item.UId)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Date)
@@ -42,8 +42,8 @@
                     @Html.DisplayFor(modelItem => item.Status)
                 </td>
                 <td>
-                    <a asp-action="Edit" asp-route-id="@item.Oid">Edit</a><br />
-                    <a asp-action="Delete" asp-route-id="@item.Oid">Delete</a>
+                    <a asp-action="Edit" asp-route-id="@item.OId">Edit</a>
+                    <a asp-action="Delete" asp-route-id="@item.OId">Delete</a>
                 </td>
             </tr>
             }

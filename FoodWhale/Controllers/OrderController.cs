@@ -1,6 +1,7 @@
-﻿using FoodWhale.Model;
+﻿using FoodWhale.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,23 +16,17 @@ namespace FoodWhale.Controllers
         //Show all information
         public ActionResult Index()
         {
-            var model = context.Orders.ToList();
+            if (HttpContext.Session.GetString("AdminSession") != null)
+            {
+                TempData["admin"] = JsonConvert.DeserializeObject<Admin>(HttpContext.Session.GetString("AdminSession"));
+                var model = context.Orders.ToList();
             return View(model);
-        }
+            }
+            else
+            {
+                return RedirectToAction("Login", "Login");
 
-        // GET: UserController/Details/5
-        public ActionResult Details(int id)
-        {
-            if (id == 0)
-            {
-                return NotFound();
             }
-            var order = context.Orders.FirstOrDefault(m => m.Oid == id);
-            if (order == null)
-            {
-                return NotFound();
-            }
-            return View(order);
         }
 
         // GET: UserController/Create
@@ -57,11 +52,7 @@ namespace FoodWhale.Controllers
         // GET: UserController/Edit/5
         public ActionResult Edit(int id)
         {
-            if (id == 0)
-            {
-                return NotFound();
-            }
-            var order = context.OrderDetails.Find(id);
+            var order = context.Orders.Find(id);
             if (order == null)
             {
                 return NotFound();
@@ -74,7 +65,7 @@ namespace FoodWhale.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit(int id, Order order)
         {
-            if (id != order.Oid)
+            if (id != order.OId)
             {
                 return NotFound();
             }

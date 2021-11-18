@@ -1,0 +1,60 @@
+﻿@model IEnumerable<FoodWhale.ViewModel.ViewModelCart>
+
+@{
+    var Admin = TempData["admin"] as Admin;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="u-align-left u-container-style u-grey-5 u-group u-group-2">
+    <a style="height:fit-content; margin-top: -2rem; margin-left: 1rem" asp-action="Create">Add</a>
+    <table class="table" style="margin-left:-2.8rem">
+        <thead>
+            <tr>
+                <th>
+                    Order ID
+                </th>
+                <th>
+                    User ID
+                </th>
+                <th>
+                    Date
+                </th>
+                <th>
+                    Status
+                </th>
+                <th>
+                    Ingredient ID
+                </th>
+                <th>
+                    Quantity
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.order.OId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.order.UId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.order.Date)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.order.Status)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.orderdetail.InId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.orderdetail.Quantity)
+                </td>
+                
+            </tr>
+            }
+        </tbody>
+    </table>
+</div>

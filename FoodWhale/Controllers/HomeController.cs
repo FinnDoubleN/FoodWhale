@@ -1,6 +1,8 @@
-﻿using FoodWhale.Model;
+﻿using FoodWhale.Models;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -20,7 +22,15 @@ namespace FoodWhale.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            if (HttpContext.Session.GetString("AdminSession") != null)
+            {
+                TempData["admin"] = JsonConvert.DeserializeObject<User>(HttpContext.Session.GetString("AdminSession"));
+                return View();
+            }
+            else
+            {
+                return View();
+            }
         }
 
         public IActionResult Privacy()

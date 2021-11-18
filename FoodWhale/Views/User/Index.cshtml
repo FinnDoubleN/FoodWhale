@@ -1,7 +1,7 @@
-﻿@model IEnumerable<FoodWhale.Model.User>
+﻿@model IEnumerable<FoodWhale.Models.User>
 
 @{
-    ViewData["Title"] = "UserList";
+    ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -14,13 +14,13 @@
                     ID
                 </th>
                 <th>
-                    Username
+                    Email
                 </th>
                 <th>
                     Password
                 </th>
                 <th>
-                    Email
+                    Username
                 </th>
                 <th>
                     DoB
@@ -31,13 +31,15 @@
                 <th>
                     Address
                 </th>
-                <th>
-                    City
-                </th>
                 <th style="background: #f2f2f2;">
                     Phone
                 </th>
-                <th style="background: #f2f2f2;"></th>
+                <th style="background: #f2f2f2;">
+                    Role
+                </th>
+                <th style="background: #f2f2f2;">
+                    Action
+                </th>
             </tr>
         </thead>
         <tbody>
@@ -45,16 +47,16 @@
             {
             <tr>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Uid)
+                    @Html.DisplayFor(modelItem => item.UId)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Uname)
+                    @Html.DisplayFor(modelItem => item.Email)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Password)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Email)
+                    @Html.DisplayFor(modelItem => item.UName)
                 </td>
                 <td>
                     @Convert.ToDateTime(item.DoB).ToString("yyyy/MM/dd")
@@ -65,15 +67,15 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.Address)
                 </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.City)
-                </td>
                 <td style="background: #f2f2f2;">
                     @Html.DisplayFor(modelItem => item.Phone)
                 </td>
                 <td style="background: #f2f2f2;">
-                    <a asp-action="Edit" asp-route-id="@item.Uid">Edit</a><br />
-                    <a asp-action="Delete" asp-route-id="@item.Uid">Delete</a>
+                    @Html.DisplayFor(modelItem => item.Role)
+                </td>
+                <td style="background: #f2f2f2;">
+                    <a asp-action="Edit" asp-route-id="@item.UId">Edit</a> |
+                    <a asp-action="Delete" asp-route-id="@item.UId">Delete</a>
                 </td>
             </tr>
             }

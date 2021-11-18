@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@{ var m = TempData["admin"] as Admin; }
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -8,6 +9,7 @@
     <link rel="stylesheet" href="~/css/site.css" />
     <link rel="stylesheet" href="~/css/Index1.css" media="screen">
     <link rel="stylesheet" href="~/css/nicepage.css" media="screen">
+    <link rel="stylesheet" href="~/css/style.css" />
     <script class="u-script" type="text/javascript" src="~/js/jquery.js" defer=""></script>
     <script class="u-script" type="text/javascript" src="~/js/nicepage.js" defer=""></script>
 </head>
@@ -25,15 +27,17 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index"></a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Recipe" asp-action="Index"></a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Category" asp-action="Index"></a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="User" asp-action="Index1"></a>
-                        </li>
+                        @{
+                            if (TempData["admin"] != null)
+                            {
+                <li class="nav-item">
+                    <a class="nav-link text-dark" asp-controller="Login" asp-action="Logout">Logout</a>
+                </li> }
+                            else
+                            {
+                <li class="nav-item">
+                    <a class="nav-link text-dark" asp-controller="Login" asp-action="Login">Loginn</a>
+                </li> } }
                     </ul>
                 </div>
             </div>
@@ -53,8 +57,9 @@
                             <a asp-controller="OrderDetail" asp-action="Index" class="u-border-none u-btn u-btn-round u-button-style u-grey-10 u-radius-50 u-btn-1">Order Detail</a>
                             <a asp-controller="Recipe" asp-action="Index" class="u-border-none u-btn u-btn-round u-button-style u-grey-10 u-radius-50 u-btn-1">Recipe</a>
                             <a asp-controller="RecipeIngredient" asp-action="Index" class="u-border-none u-btn u-btn-round u-button-style u-grey-10 u-radius-50 u-btn-1">Recipe Ingredient</a>
-                            <a asp-controller="UserAccess" asp-action="Index" class="u-border-none u-btn u-btn-round u-button-style u-grey-10 u-radius-50 u-btn-1">User Access</a>
+                            <a asp-controller="RecipeLike" asp-action="Index" class="u-border-none u-btn u-btn-round u-button-style u-grey-10 u-radius-50 u-btn-1">Recipe Like</a>
                             <a asp-controller="User" asp-action="Index" class="u-border-none u-btn u-btn-round u-button-style u-grey-10 u-radius-50 u-btn-1">User</a>
+                            <a asp-controller="Cart" asp-action="Index" class="u-border-none u-btn u-btn-round u-button-style u-grey-10 u-radius-50 u-btn-1">Cart</a>
                         </div>
                     </div>
                     @RenderBody()
@@ -71,6 +76,13 @@
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
+    <script type="text/javascript">
+        document.getElementById("login").addEventListener("click", login);
+        function login() {
+            var url = "@Url.Action("Login", "Login")";
+            location.href = url;
+        }
+    </script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

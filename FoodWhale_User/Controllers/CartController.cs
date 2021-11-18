@@ -1,5 +1,4 @@
 ﻿using FoodWhale_User.Models;
-using FoodWhale_User.ViewModel;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;

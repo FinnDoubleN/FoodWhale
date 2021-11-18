@@ -1,0 +1,52 @@
+﻿@model IEnumerable<FoodWhale.Models.RecipeLike>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="u-align-left u-container-style u-grey-5 u-group u-group-2">
+    <a style="height:fit-content; margin-top: -2rem; margin-left: 1rem" asp-action="Create">Add</a>
+    <table class="table" style="margin-left:-2.8rem">
+        <thead>
+            <tr>
+                <th>
+                    Recipe Like ID
+                </th>
+                <th>
+                    Recipe ID
+                </th>
+                <th>
+                    User ID
+                </th>
+                <th>
+                    True/False
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.RlId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.RId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.UId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Fav)
+                    </td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.RlId">Edit</a> |
+                        <a asp-action="Delete" asp-route-id="@item.RlId">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

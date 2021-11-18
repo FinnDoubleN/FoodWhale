@@ -1,0 +1,20 @@
+﻿@model FoodWhale.Models.Admin
+
+    <div class="u-align-left u-container-style u-grey-5 u-group u-group-2">
+        <div class="login">
+            <div class="form">
+                <div class="selection-login selection">
+                    <input type="submit" name="login" value="Login" id="login">
+                </div>
+                <form asp-controller="Login" asp-action="Login" method="post">
+                    <div class="input-login flex">
+                        <input type="text" asp-for="Username" placeholder="Username" id="" required>
+                        <span asp-validation-for="Username"></span>
+                        <input type="password" asp-for="Password" placeholder="Password" id="" required>
+                        <span asp-validation-for="Password"></span>
+                        <input type="submit" value="Login">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>

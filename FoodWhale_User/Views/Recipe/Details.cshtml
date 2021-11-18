@@ -1,4 +1,5 @@
-﻿@{ 
+﻿@model FoodWhale_User.Models.Recipe
+@{ 
     Layout = "~/Views/Shared/_Layout.cshtml";
     <link href="~/css/details.css" rel="stylesheet" />
 }
@@ -14,7 +15,7 @@
                     <a asp-controller="Recipe" asp-action="Index">Recipe/</a>
                 </li>
                 <li class="active">
-                    <span>Fried Eggs</span>
+                    <span>@Model.RName</span>
                 </li>
             </ul>
         </div><!--ex: foodwhale/recipe/eggs-->
@@ -26,32 +27,15 @@
                             <div class="avaBox">
                                 <img src="" />
                             </div>
-                            <img class="play-video" src="" />
+                            <img class="play-video" src="@Model.Image" />
                         </div>
-                        <div class="side">
-                            <div class="side-item is-main">
-                                <img class="img-fit" src="" />
-                            </div>
-                            <div class="side-item">
-                                <img class="img-fit" src="" />
-                            </div>
-                            <div class="side-item">
-                                <img class="img-fit" src="" />
-                            </div>
-                            <div class="side-item">
-                                <img class="img-fit" src="" />
-                            </div>
-                            <div class="side-item">
-                                <img class="img-fit" src="" />
-                            </div>
-                        </div>
-                    </div><!--ex: anh do an-->
+                    </div>
                 </div>
                 <div class="package-info">
                     <div class="basic-info-box">
-                        <h1 class="names">Fried Eggs</h1>
+                        <h1 class="names">@Model.RName</h1>
                         <div class="stat">
-                            <div class="type">Eggs</div>
+                            <div class="type">@Model.</div>
                         </div>
                         <div class="options-box">
                             <ul class="custom-horizontal-scrollbar" title="add to cart">
@@ -66,7 +50,7 @@
                             <button class="add-item-wrapper n-btn btn-add-to-cart btn-add-to-collection ">
                                 <span class="row-1">
                                     <img class="icon" src="~/img/rating.png" />
-                                    <span class="text display-block">10/10</span>
+                                    <span class="text display-block">@Model.LikeCount</span>
                                 </span>
                             </button>
                             <button class="btn-add-to-cart n-btn btn-add-to-cart"

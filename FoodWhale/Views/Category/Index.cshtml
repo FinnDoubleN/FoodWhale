@@ -1,39 +1,38 @@
-﻿@model IEnumerable<FoodWhale.Model.Category>
+﻿@model IEnumerable<FoodWhale.Models.Category>
 
 @{
-    ViewData["Title"] = "Category";
+    ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
 <div class="u-align-left u-container-style u-grey-5 u-group u-group-2">
     <a style="height:fit-content; margin-top: -2rem; margin-left: 1rem" asp-action="Create">Add</a>
-    <table class="table" style="margin-left:-2.8rem">
+    <table class="table">
         <thead>
             <tr>
                 <th>
-                    ID
+                    Category ID
                 </th>
                 <th>
-                    Category
+                    Category Name
                 </th>
-                <th></th>
+                <th>Action</th>
             </tr>
         </thead>
         <tbody>
             @foreach (var item in Model)
             {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Cid)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Cname)
-                    </td>
-                    <td>
-                        <a asp-action="Edit" asp-route-id="@item.Cid">Edit</a><br />
-                        <a asp-action="Delete" asp-route-id="@item.Cid">Delete</a>
-                    </td>
-                </tr>
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CategoryId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CName)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.CategoryId">Edit</a> |
+                    <a asp-action="Delete" asp-route-id="@item.CategoryId">Delete</a>
+                </td>
+            </tr>
             }
         </tbody>
     </table>

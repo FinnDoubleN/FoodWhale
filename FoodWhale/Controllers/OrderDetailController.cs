@@ -1,6 +1,7 @@
-﻿using FoodWhale.Model;
+﻿using FoodWhale.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,23 +16,17 @@ namespace FoodWhale.Controllers
         //Show all information
         public ActionResult Index()
         {
-            var model = context.OrderDetails.ToList();
-            return View(model);
-        }
+            if (HttpContext.Session.GetString("AdminSession") != null)
+            {
+                TempData["admin"] = JsonConvert.DeserializeObject<Admin>(HttpContext.Session.GetString("AdminSession"));
+                var model = context.OrderDetails.ToList();
+                return View(model);
+            }
+            else
+            {
+                return RedirectToAction("Login", "Login");
 
-        //GET: UserController/Details/5
-        public ActionResult Details(String id)
-        {
-            if (id == null)
-            {
-                return NotFound();
             }
-            var orderdetail = context.OrderDetails.FirstOrDefault(m => m.Odid == id);
-            if (orderdetail == null)
-            {
-                return NotFound();
-            }
-            return View(orderdetail);
         }
 
         // GET: UserController/Create
@@ -55,12 +50,8 @@ namespace FoodWhale.Controllers
         }
 
         // GET: UserController/Edit/5
-        public ActionResult Edit(String id)
+        public ActionResult Edit(int id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
             var orderdetail = context.OrderDetails.Find(id);
             if (orderdetail == null)
             {
@@ -72,9 +63,9 @@ namespace FoodWhale.Controllers
         // POST: UserController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(String id, OrderDetail orderdetail)
+        public ActionResult Edit(int id, OrderDetail orderdetail)
         {
-            if (id != orderdetail.Odid)
+            if (id != orderdetail.OdId)
             {
                 return NotFound();
             }
@@ -89,7 +80,7 @@ namespace FoodWhale.Controllers
         }
 
         // GET: UserController/Delete/5
-        public ActionResult Delete(String id)
+        public ActionResult Delete(int id)
         {
             var orderdetail = context.OrderDetails.Find(id);
             context.OrderDetails.Remove(orderdetail);

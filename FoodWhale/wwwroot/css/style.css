@@ -1,0 +1,217 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    line-height: 1.6;
+}
+
+ul {
+    list-style-type: none;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+h1,
+h2 {
+    font-weight: 300;
+    line-height: 1.2;
+    margin: 10px 0;
+}
+
+p {
+    margin: 10px 0;
+    color: black;
+}
+
+img {
+    width: 100%;
+}
+
+.navbar {
+    background-color: #F22726;
+    color: #fff;
+    height: 70px;
+}
+
+.navbar .left {
+    display: flex;
+    align-items: center;
+}
+
+.navbar ul {
+    display: flex;
+    align-items: center;
+}
+
+.navbar input {
+    height: 20px;
+    margin: 0 30px;
+}
+
+.navbar img {
+    margin: 0 30px 0 0;
+}
+
+.navbar .flex {
+    justify-content: space-between;
+}
+
+.container {
+    max-width: auto;
+    margin: 0 auto;
+    overflow: auto;
+    padding: 0 40px;
+}
+
+.login {
+    height: 100%;
+    width: 100%;
+}
+
+.form {
+    max-width: 500px;
+    margin: 0 auto;
+    overflow: auto;
+    padding: 0;
+    margin-top: 150px;
+    border: 1px solid #d3d3d3;
+    border-radius: 10px;
+    background-color: white;
+}
+
+.form .input-login {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    margin: 20px;
+}
+
+.form .input-register {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    margin: 20px;
+}
+
+.input-login input {
+    margin: 5px;
+    max-width: 280px;
+    padding: 3px;
+    font-size: 16px;
+}
+
+.input-register input {
+    margin: 5px;
+    max-width: 280px;
+    padding: 3px;
+    font-size: 16px;
+}
+
+.input-register input[type='text'] {
+    border: 0;
+    border-bottom: 1px solid #b4becb;
+    width: 100%;
+    margin: 20px;
+    margin-top: 0;
+    margin-bottom: 40px;
+}
+
+.input-login input[type='text'],
+.input-login input[type='password'] {
+    border: 0;
+    border-bottom: 1px solid #b4becb;
+    width: 100%;
+    margin: 20px;
+    margin-top: 0;
+    margin-bottom: 40px;
+}
+
+.input-login input[type='text']:focus,
+.input-login input[type='password']:focus {
+    outline: none;
+}
+
+.input-register input[type='text']:focus {
+    outline: none;
+}
+
+.input-register input[type='submit'] {
+    display: inline-block;
+    padding: 10px 30px;
+    cursor: pointer;
+    background: #048aed;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+}
+
+.input-login input[type='submit'] {
+    display: inline-block;
+    padding: 10px 30px;
+    cursor: pointer;
+    background: #048aed;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+}
+
+.input-register input[type='submit']:hover {
+    transform: scale(0.98);
+}
+
+.input-register input[type='submit']:focus {
+    outline: none;
+}
+
+.input-login input[type='submit']:hover {
+    transform: scale(0.98);
+}
+
+.input-login input[type='submit']:focus {
+    outline: none;
+}
+
+.form .selection {
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+}
+
+.selection input {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    padding: 0 10px;
+    font-size: 20px;
+    width: 100%;
+    margin: 20px;
+    border: 0;
+    background-color: white;
+}
+
+.selection input[type='submit']:focus {
+    outline: none;
+}
+
+.selection input[type='submit']:hover {
+    border-bottom: 2px black solid;
+}
+
+.selection-login input[name='login'] {
+    border-bottom: 2px black solid;
+}
+
+.selection-register input[name='register'] {
+    border-bottom: 2px black solid;
+}

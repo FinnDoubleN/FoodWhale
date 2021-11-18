@@ -1,6 +1,7 @@
-﻿using FoodWhale.Model;
+﻿using FoodWhale.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,27 +16,21 @@ namespace FoodWhale.Controllers
         //Show all information
         public ActionResult Index()
         {
-            var model = context.RecipeIngredients.ToList();
-            return View(model);
+            if (HttpContext.Session.GetString("AdminSession") != null)
+            {
+                TempData["admin"] = JsonConvert.DeserializeObject<Admin>(HttpContext.Session.GetString("AdminSession"));
+                var model = context.RecipeIngredients.ToList();
+                return View(model);
+            }
+            else
+            {
+                return RedirectToAction("Login", "Login");
+
+            }
         }
 
-        // GET: UserController/Details/5
-        public ActionResult Details(int id)
-        {
-            if (id == 0)
-            {
-                return NotFound();
-            }
-            var recipeIngredient = context.RecipeIngredients.FirstOrDefault(m => m.Rid == id);
-            if (recipeIngredient == null)
-            {
-                return NotFound();
-            }
-            return View(recipeIngredient);
-        }
-
-        //GET: UserController/Create
-        public ActionResult Create()
+            // GET: UserController/Create
+            public ActionResult Create()
         {
             return View();
         }
@@ -43,56 +38,52 @@ namespace FoodWhale.Controllers
         // POST: UserController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(RecipeIngredient recipeIngredient)
+        public ActionResult Create(RecipeIngredient recipeingredient)
         {
             if (ModelState.IsValid)
             {
-                context.Add(recipeIngredient);
+                context.Add(recipeingredient);
                 context.SaveChanges();
                 return RedirectToAction(nameof(Index));
             }
-            return View(recipeIngredient);
+            return View(recipeingredient);
         }
 
         // GET: UserController/Edit/5
         public ActionResult Edit(int id)
         {
-            if (id == 0)
+            var recipeingredient = context.RecipeIngredients.Find(id);
+            if (recipeingredient == null)
             {
                 return NotFound();
             }
-            var recipeIngredient = context.RecipeIngredients.Find(id);
-            if (recipeIngredient == null)
-            {
-                return NotFound();
-            }
-            return View(recipeIngredient);
+            return View(recipeingredient);
         }
 
         // POST: UserController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, RecipeIngredient recipeIngredient)
+        public ActionResult Edit(int id, RecipeIngredient recipeingredient)
         {
-            if (id != recipeIngredient.Rid)
+            if (id != recipeingredient.RiId)
             {
                 return NotFound();
             }
             if (ModelState.IsValid)
             {
-                context.Update(recipeIngredient);
+                context.Update(recipeingredient);
                 context.SaveChanges();
                 return RedirectToAction(nameof(Index));
             }
-            return View(recipeIngredient);
+            return View(recipeingredient);
 
         }
 
         // GET: UserController/Delete/5
         public ActionResult Delete(int id)
         {
-            var recipeIngredient = context.RecipeIngredients.Find(id);
-            context.RecipeIngredients.Remove(recipeIngredient);
+            var recipeingredient = context.RecipeIngredients.Find(id);
+            context.RecipeIngredients.Remove(recipeingredient);
             context.SaveChanges();
             return RedirectToAction(nameof(Index));
         }

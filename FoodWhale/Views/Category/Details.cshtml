@@ -1,4 +1,4 @@
-﻿@model FoodWhale.Model.Category
+﻿@model FoodWhale.Models.Category
 
 @{
     ViewData["Title"] = "Details";
@@ -12,14 +12,14 @@
     <hr />
     <dl class="row">
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Cname)
+            @Html.DisplayNameFor(model => model.CName)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Cname)
+            @Html.DisplayFor(model => model.CName)
         </dd>
     </dl>
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model.Cid">Edit</a> |
+    <a asp-action="Edit" asp-route-id="@Model.CategoryId">Edit</a> |
     <a asp-action="Index">Back to List</a>
 </div>

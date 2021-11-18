@@ -49,13 +49,13 @@
                                 <a class="nav-link" asp-action="Index" asp-controller="Home">Home <span class="sr-only">(current)</span></a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" asp-action="Index" asp-controller="Recipe">Recipe</a>
+                                <a class="nav-link" asp-action="Index" asp-controller="ViewModelRecipe">Recipe</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" asp-action="Index" asp-controller="Ingredient">Ingredient</a>
+                                <a class="nav-link" asp-action="Index" asp-controller="ViewModelIngredient">Ingredient</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" asp-action="Index" asp-controller="About">About</a>
+                                <a class="nav-link" asp-action="About" asp-controller="Home">About</a>
                             </li>
                         </ul>
                         <div class="user_option">
@@ -769,7 +769,7 @@
     <!-- nice select -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-nice-select/1.1.0/js/jquery.nice-select.min.js"></script>
     <!-- custom js -->
-    <script src="~/js/custom.js"></script>
+    <script src="~/js/custom.js" async></script>
     <!-- Google Map -->
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCh39n5U-4IoWpsVGUHWdqB6puEkhRLdmI&callback=myMap">
     </script>

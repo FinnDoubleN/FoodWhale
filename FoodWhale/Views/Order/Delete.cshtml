@@ -1,4 +1,4 @@
-﻿@model FoodWhale.Model.Order
+﻿@model FoodWhale.Models.Order
 
 @{
     ViewData["Title"] = "Delete";
@@ -25,15 +25,15 @@
             @Html.DisplayFor(model => model.Status)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.UidNavigation)
+            @Html.DisplayNameFor(model => model.UIdNavigation)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.UidNavigation.Uid)
+            @Html.DisplayFor(model => model.UIdNavigation.Email)
         </dd class>
     </dl>
     
     <form asp-action="Delete">
-        <input type="hidden" asp-for="Oid" />
+        <input type="hidden" asp-for="OId" />
         <input type="submit" value="Delete" class="btn btn-danger" /> |
         <a asp-action="Index">Back to List</a>
     </form>

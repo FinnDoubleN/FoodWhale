@@ -1,4 +1,4 @@
-﻿@model FoodWhale.Model.UserAccess
+﻿@model FoodWhale.Models.RecipeLike
 
 @{
     ViewData["Title"] = "Delete";
@@ -9,25 +9,31 @@
 
 <h3>Are you sure you want to delete this?</h3>
 <div>
-    <h4>UserAccess</h4>
+    <h4>RecipeLike</h4>
     <hr />
     <dl class="row">
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.DateAccess)
+            @Html.DisplayNameFor(model => model.Fav)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.DateAccess)
+            @Html.DisplayFor(model => model.Fav)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.UidNavigation)
+            @Html.DisplayNameFor(model => model.RId)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.UidNavigation.Uid)
+            @Html.DisplayFor(model => model.RId)
+        </dd class>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.UId)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.UId)
         </dd class>
     </dl>
     
     <form asp-action="Delete">
-        <input type="hidden" asp-for="Aid" />
+        <input type="hidden" asp-for="RlId" />
         <input type="submit" value="Delete" class="btn btn-danger" /> |
         <a asp-action="Index">Back to List</a>
     </form>

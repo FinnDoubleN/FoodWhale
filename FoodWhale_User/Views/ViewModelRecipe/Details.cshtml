@@ -1,0 +1,132 @@
+﻿@model IEnumerable<FoodWhale_User.Models.ViewModelRecipe>
+@{ var user = TempData["user"] as User;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    String check = "";
+}
+
+<div class="page-containers">
+    <div class="page-wrappers">
+        <div class="breadcrumbs">
+            <ul>
+                <li class="">
+                    <a asp-controller="Home" asp-action="Index">FoodWhale/</a>
+                </li>
+                <li class="">
+                    <a asp-controller="Recipe" asp-action="Index">Recipe/</a>
+                </li>
+                <li class="active">
+                    @foreach (var item in Model)
+                    {
+        <span>@Html.DisplayFor(modelItem => item.recipe.RName)</span>break;
+                    }
+                </li>
+            </ul>
+        </div><!--ex: foodwhale/recipe/eggs-->
+        <div class="product-detail-container">
+            <div class="product-common">
+                <div class="photo-container">
+                    <div class="photo-box">
+                        <div class="main-photo">
+                            <div class="avaBox">
+                                @foreach (var item in Model)
+                                {
+                                    <img style="height: 100%" src="@Html.DisplayFor(modelItem => item.recipe.Image)" alt="" >break;
+                                }
+                            </div>
+                        </div>
+                    </div><!--ex: anh do an-->
+                </div>
+                <div class="package-info">
+                    <div class="basic-info-box">
+                        @foreach (var item in Model)
+                        {
+                    <h1 class="names">@Html.DisplayFor(modelItem => item.recipe.RName)</h1>break;
+                        }
+                        <div class="stat">
+                            @foreach (var item in Model)
+                            { if (item.category.CName == check) { }
+                                else
+                                {
+                    <div class="type">
+                        @Html.DisplayFor(modelItem => item.category.CName)
+                    </div>} check = item.category.CName;
+                            }
+                        </div>
+                        <div class="options-box">
+                            <ul class="custom-horizontal-scrollbar" title="add to cart">
+                                <button class="add-to-cart">
+                                <li class="is-default">Eggs</li>
+                                </button>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="extra-info-box">
+                        <div class="display-flex btn-cart-box">
+                            <button class="add-item-wrapper n-btn btn-add-to-cart btn-add-to-collection ">
+                                <span class="row-1">
+                                    <img class="icon" src="~/img/rating.png" />
+                                    <span class="text display-block">
+                                    @foreach (var item in Model)
+                                    {
+                                    @Html.DisplayFor(modelItem => item.recipe.LikeCount)
+                                        break;
+                                    }
+                                    </span>
+                                </span>
+                            </button>
+                            <button class="btn-add-to-cart n-btn btn-add-to-cart"
+                                        title="bam de them vao gio hang" style="background: none !important;">
+                                <span class="row-1">
+                                    <img class="icon" src="~/img/cart.png" />
+                                <span class="text display-block">Add to Cart</span>
+                                </span>
+                            </button>
+                            <button class="btn-add-to-cart n-btn btn-order "
+                                        title="bam de mua ngay" style="background: rgb(242, 39, 38) !important;">
+                                <span class="row-1">
+                                    <span class="text display-block">Buy Now</span>
+                                </span>
+                            </button>
+                        </div>
+                        <ul class="services-box">
+                            <li class="">
+                                <img src="~/img/difficulties.png" />
+                                Difficulty
+                                @foreach (var item in Model)
+                                {
+                                <div>@Html.DisplayFor(modelItem => item.recipe.Difficulty)</div>break;
+                                }
+                            </li>
+                            <li class="active">
+                                <img src="~/img/clock.png" />
+                                Time
+                                @foreach (var item in Model)
+                                {
+                                <div>@Html.DisplayFor(modelItem => item.recipe.Time)</div>break;
+                                }
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="product-desc">
+                <div class="title-box">
+                    <div class="active">Huong dan</div>
+                </div>
+                <div class="content-box">
+                    <div class="active">
+                        <ul class="rc-steps-box">
+                           @foreach (var item in Model)
+                            {
+                            <li>
+                                @Html.DisplayFor(modelItem => item.recipe.RDescription)
+                            </li>
+                               break;
+                           }
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
